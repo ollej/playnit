@@ -2,8 +2,8 @@
     font-family:"MuseoSlab500Regular";
     font-weight:400;
     font-style:"normal";
-    src:url(/fonts/Museo_Slab_500-webfont.eot);
-    src:url(/fonts/Museo_Slab_500-webfont.ttf) format('truetype');
+    src:url(../fonts/Museo_Slab_500-webfont.eot);
+    src:url(../fonts/Museo_Slab_500-webfont.ttf) format('truetype');
 }
 
 header#header.no-submenu {
@@ -21,6 +21,24 @@ header#header {
     position: relative;
 }
 
+#globalbox {
+    background-color: white;
+    margin: 0 auto;
+    position: relative;
+    width: 970px;
+}
+
+#globalbox {
+    -webkit-transition-property: padding;
+    -moz-transition-property: padding;
+    -o-transition-property: padding;
+    transition-property: padding;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
 #main {
     font-size: 13px;
     font-size: 1.3rem;
@@ -31,10 +49,15 @@ header#header {
     margin: 0 auto;
     padding: 26px;
     width: 918px;
+    background: white;
+    padding-bottom: 200px;
 }
 
 .box {
+    /*
     width: 396.5px;
+    */
+    width: 865px;
 }
 
 .columns .lcol, .columns .rcol {
@@ -56,6 +79,7 @@ header#header {
     overflow: auto;
     margin: 20px 0;
     margin: 2rem 0;
+    text-align: center;
 }
 
 h1.text {
@@ -96,7 +120,7 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child {
     margin-top: 0;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     font-size: 23px;
     font-size: 2.3rem;
@@ -107,6 +131,10 @@ h1 {
 
 p {
     line-height: 1.4em;
+}
+
+a {
+    color: black;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
