@@ -8,7 +8,7 @@ function compile {
 
 function commit {
     # Commit compiled assets
-    echo "Commiting..."
+    echo "Committing..."
     git add public/assets
     git commit -m "Commit compiled assets."
 }
