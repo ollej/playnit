@@ -1,0 +1,26 @@
+<h1>What are people playing?</h1>
+
+<p><%= link_to 'What are you playing?', new_playing_path %></p>
+
+<table>
+  <tr>
+    <th>Game</th>
+    <th>Where</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @playings.each do |playing| %>
+  <tr>
+    <td><%= playing.game %></td>
+    <td><%= playing.location %></td>
+    <td><%= playing.content %></td>
+    <td><%= link_to 'Show', playing %></td>
+    <td><%= link_to 'Edit', edit_playing_path(playing) %></td>
+    <td><%= link_to 'Destroy', playing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
