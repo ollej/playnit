@@ -12,7 +12,8 @@ namespace :publish do
   desc "Compile application"
   task :compile do
     fail "Please commit all changes before release." if !git_clean()
-    sh %{RAILS_ENV=production bundle exec rake assets:precompile}
+    #sh %{RAILS_ENV=production bundle exec rake assets:precompile}
+    system("rake assets:precompile RAILS_ENV=production")
     #ActiveRecord::Base.establish_connection('production')
     #Rake::Task["assets:precompile"].invoke
     #ActiveRecord::Base.establish_connection(ENV['RAILS_ENV'])
@@ -20,13 +21,13 @@ namespace :publish do
 
   desc "Commit assets to repo"
   task :commitassets => :compile do
-    sh %{echo git add public/assets}
-    sh %{echo git commit -m "Commit compiled assets."}
+    sh %{git add public/assets}
+    sh %{git commit -m "Commit compiled assets."}
   end
 
   desc "Release app to heroku"
   task :release => :commitassets do
-    sh %{echo git push heroku master}
+    sh %{git push heroku master}
   end
 end
 
