@@ -2,6 +2,7 @@
 
 require 'fileutils'
 
+# Returns true if all files are committed to git repo.
 def git_clean
   status = %x{git status 2> /dev/null}
   return status =~ /working directory clean/
