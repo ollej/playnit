@@ -13,7 +13,7 @@ namespace :publish do
   task :compile do
     fail "Please commit all changes before release." if !git_clean()
     #sh %{RAILS_ENV=production bundle exec rake assets:precompile}
-    system("rake assets:precompile RAILS_ENV=production")
+    system("bundle exec rake assets:precompile RAILS_ENV=production")
     #ActiveRecord::Base.establish_connection('production')
     #Rake::Task["assets:precompile"].invoke
     #ActiveRecord::Base.establish_connection(ENV['RAILS_ENV'])
