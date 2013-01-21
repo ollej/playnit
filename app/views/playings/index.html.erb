@@ -18,8 +18,10 @@
     <td><%= playing.location %></td>
     <td><%= playing.content %></td>
     <td><%= link_to 'Show', playing %></td>
-    <td><%= link_to 'Edit', edit_playing_path(playing) %></td>
-    <td><%= link_to 'Destroy', playing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!--
+    <td><#= link_to 'Edit', edit_playing_path(playing) #></td>
+    <td><#= link_to 'Destroy', playing, method: :delete, data: { confirm: 'Are you sure?' } #></td>
+    -->
   </tr>
 <% end %>
 </table>

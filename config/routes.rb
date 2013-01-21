@@ -1,5 +1,5 @@
 Playnit::Application.routes.draw do
-  resources :playings
+  resources :playings, :only => [:new, :create, :index, :show]
 
   get "home/index"
 
