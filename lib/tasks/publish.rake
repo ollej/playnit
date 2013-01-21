@@ -13,7 +13,7 @@ namespace :publish do
   task :compile do
     fail "Please commit all changes before release." if !git_clean()
     #sh %{RAILS_ENV=production bundle exec rake assets:precompile}
-    system("bundle exec rake assets:precompile RAILS_ENV=production")
+    system("bundle exec rake assets:precompile RAILS_ENV=production") or fail
     #ActiveRecord::Base.establish_connection('production')
     #Rake::Task["assets:precompile"].invoke
     #ActiveRecord::Base.establish_connection(ENV['RAILS_ENV'])
@@ -32,7 +32,7 @@ namespace :publish do
 
   desc "Migrate db on heroku"
   task :migrate do
-    sh %{heroku run rake db:migrate}
+    system("heroku run rake db:migrate") or fail
   end
 
   desc "Restart heroku app"
