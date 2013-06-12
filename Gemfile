@@ -10,6 +10,7 @@ gem 'pg'
 gem 'thin'
 gem 'authlogic'
 #gem 'sqlite3'
+gem 'devise'
 
 
 # Gems used only for assets and not required

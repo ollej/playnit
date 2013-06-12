@@ -1,5 +1,7 @@
 Playnit::Application.routes.draw do
-  resources :playings, :only => [:new, :create, :index, :show]
+  devise_for :users
+
+  resources :playings, :only => [:new, :create, :index, :show, :destroy, :edit, :update]
 
   get "home/index"
 

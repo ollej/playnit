@@ -1,4 +1,6 @@
 class PlayingsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:destroy, :edit, :update]
+
   # GET /playings
   # GET /playings.json
   def index
@@ -34,13 +36,16 @@ class PlayingsController < ApplicationController
 
   # GET /playings/1/edit
   def edit
-    @playing = Playing.find(params[:id])
+    @playing = current_user.playing.find(params[:id])
   end
 
   # POST /playings
   # POST /playings.json
   def create
     @playing = Playing.new(params[:playing])
+    if user_signed_in?
+      @playing.user = current_user
+    end
 
     respond_to do |format|
       if @playing.save
@@ -56,7 +61,7 @@ class PlayingsController < ApplicationController
   # PUT /playings/1
   # PUT /playings/1.json
   def update
-    @playing = Playing.find(params[:id])
+    @playing = current_user.playing.find(params[:id])
 
     respond_to do |format|
       if @playing.update_attributes(params[:playing])
@@ -72,7 +77,7 @@ class PlayingsController < ApplicationController
   # DELETE /playings/1
   # DELETE /playings/1.json
   def destroy
-    @playing = Playing.find(params[:id])
+    @playing = current_user.playing.find(params[:id])
     @playing.destroy
 
     respond_to do |format|
