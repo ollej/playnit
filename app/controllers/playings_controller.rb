@@ -43,6 +43,8 @@ class PlayingsController < ApplicationController
   # POST /playings.json
   def create
     @playing = Playing.new(params[:playing])
+    @playing.session_token = session[:session_token]
+
     if user_signed_in?
       @playing.user = current_user
     end

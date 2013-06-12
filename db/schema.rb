@@ -11,16 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612122002) do
+ActiveRecord::Schema.define(:version => 20130612132717) do
 
   create_table "playings", :force => true do |t|
     t.string   "game"
     t.string   "location"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "user_id"
+    t.string   "session_token"
   end
+
+  add_index "playings", ["session_token"], :name => "index_playings_on_session_token"
+  add_index "playings", ["user_id"], :name => "index_playings_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
