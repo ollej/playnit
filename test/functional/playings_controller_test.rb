@@ -30,20 +30,20 @@ class PlayingsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
-    get :edit, id: @playing
-    assert_response :success
+    assert_raises(ActionController::RoutingError) do
+      get :edit, id: @playing
+    end
   end
 
   test "should update playing" do
-    put :update, id: @playing, playing: { content: @playing.content, game: @playing.game, location: @playing.location }
-    assert_redirected_to playing_path(assigns(:playing))
+    assert_raises(ActionController::RoutingError) do
+      put :update, id: @playing, playing: { content: @playing.content, game: @playing.game, location: @playing.location }
+    end
   end
 
   test "should destroy playing" do
-    assert_difference('Playing.count', -1) do
+    assert_raises(ActionController::RoutingError) do
       delete :destroy, id: @playing
     end
-
-    assert_redirected_to playings_path
   end
 end
