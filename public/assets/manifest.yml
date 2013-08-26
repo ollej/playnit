@@ -1,7 +1,9 @@
 ---
+loading.gif: loading-a37efe94d9c3cd5aad92a0abbc829d97.gif
+loading/index.gif: loading-a37efe94d9c3cd5aad92a0abbc829d97.gif
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-32ed6ebaba49211fc69e08f40c7b97c4.js
-application/index.js: application-32ed6ebaba49211fc69e08f40c7b97c4.js
+application.js: application-f73feb40ab6408a3d624acecbca01632.js
+application/index.js: application-f73feb40ab6408a3d624acecbca01632.js
 application.css: application-a1734b6ec3a0e5935a9fe7d0edb80ac1.css
 application/index.css: application-a1734b6ec3a0e5935a9fe7d0edb80ac1.css
