@@ -1,33 +1,11 @@
 <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false" %>
-<%= coffeescript_tag do -%>
-  geo = new Geo((position) ->
-    $('#playing_latitude').val(position.coords.latitude)
-    $('#playing_longitude').val(position.coords.longitude)
-    $mapDiv = $('<div>', {
-      id: 'mapcanvas',
-      width: 640,
-      height: 480
-    })
-    console.log $mapDiv
-    latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    console.log latlng
-    options = {
-      zoom: 15,
-      center: latlng,
-      mapTypeControl: false,
-      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    console.log options
-    map = new google.maps.Map($mapDiv[0], options);
-    marker = new google.maps.Marker({
-      position: latlng,
-      map: map,
-      title: "You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+<%= javascript_tag do -%>
+  $(document).ready(function() {
+    var geo = new GeoLocator("#map", function (position) {
+      $('#playing_latitude').val(position.coords.latitude)
+      $('#playing_longitude').val(position.coords.longitude)
     });
-    $('#map').replaceWith($mapDiv)
-  )
-  geo.locate()
+  });
 <% end -%>
 <h1>New playing</h1>
 
