@@ -2,6 +2,8 @@
 
 require 'fileutils'
 
+app = 'calm-plains-7356'
+
 # Returns true if all files are committed to git repo.
 def git_clean
   status = %x{git status 2> /dev/null}
@@ -32,12 +34,12 @@ namespace :publish do
 
   desc "Migrate db on heroku"
   task :migrate do
-    system("heroku run rake db:migrate") or fail
+    system("heroku run rake db:migrate --app #{app}") or fail
   end
 
   desc "Restart heroku app"
   task :restart do
-    sh %{heroku restart}
+    sh %{heroku restart --app #{app}}
   end
 
   task :tag do
