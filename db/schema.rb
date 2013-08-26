@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612132717) do
+ActiveRecord::Schema.define(:version => 20130826193714) do
 
   create_table "playings", :force => true do |t|
     t.string   "game"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20130612132717) do
     t.datetime "updated_at",    :null => false
     t.integer  "user_id"
     t.string   "session_token"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
   end
 
   add_index "playings", ["session_token"], :name => "index_playings_on_session_token"

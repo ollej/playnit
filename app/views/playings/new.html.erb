@@ -1,5 +1,36 @@
+<%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false" %>
+<%= coffeescript_tag do -%>
+  geo = new Geo((position) ->
+    $mapDiv = $('<div>', {
+      id: 'mapcanvas',
+      width: 640,
+      height: 480
+    })
+    console.log $mapDiv
+    latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    console.log latlng
+    options = {
+      zoom: 15,
+      center: latlng,
+      mapTypeControl: false,
+      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    console.log options
+    map = new google.maps.Map($mapDiv[0], options);
+    marker = new google.maps.Marker({
+      position: latlng,
+      map: map,
+      title: "You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+    });
+    $('#map').replaceWith($mapDiv)
+  )
+  geo.locate()
+<% end -%>
 <h1>New playing</h1>
 
 <%= render 'form' %>
+
+<div id="map"><%= image_tag "loading.gif" %></div>
 
 <%= link_to 'Back', playings_path %>
