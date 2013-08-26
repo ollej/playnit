@@ -1,6 +1,8 @@
 <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false" %>
 <%= coffeescript_tag do -%>
   geo = new Geo((position) ->
+    $('#playing_latitude').val(position.coords.latitude)
+    $('#playing_longitude').val(position.coords.longitude)
     $mapDiv = $('<div>', {
       id: 'mapcanvas',
       width: 640,

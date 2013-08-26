@@ -1,5 +1,5 @@
 class Playing < ActiveRecord::Base
-  attr_accessible :content, :game, :location
+  attr_accessible :content, :game, :location, :latitude, :longitude
   belongs_to :user
 
   validates :game,    :presence => true
