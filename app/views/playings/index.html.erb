@@ -7,6 +7,7 @@
     <th>Game</th>
     <th>Where</th>
     <th>Note</th>
+    <th>Map</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= playing.game %></td>
     <td><%= playing.location %></td>
     <td><%= playing.content %></td>
+    <td><%= link_to "Map", "http://maps.google.com/?ie=UTF8&hq=&z=15&ll=#{playing.latitude.to_s('F')},#{playing.longitude.to_s('F')}" %></td>
     <td><%= link_to 'Show', playing %></td>
     <% if user_signed_in? and current_user == playing.user %>
     <td><%= link_to 'Edit', edit_playing_path(playing) %></td>
