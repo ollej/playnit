@@ -11,4 +11,12 @@ class Playing < ActiveRecord::Base
       p.update_attribute(:user, user)
     end
   end
+
+  def coords
+    "#{latitude},#{longitude}"
+  end
+
+  def map_link
+    "http://maps.google.com/maps?ie=UTF8&t=h&z=15&q=#{coords}"
+  end
 end
