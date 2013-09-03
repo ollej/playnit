@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +11,7 @@ gem 'thin'
 gem 'authlogic'
 #gem 'sqlite3'
 gem 'devise'
+gem 'eco'
 
 
 # Gems used only for assets and not required
@@ -22,6 +23,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -30,10 +32,16 @@ gem 'jquery-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+group(:development) do
+  # To use debugger
+  gem 'debugger'
+end
+
+group(:test) do
+  gem 'sqlite3'
+end
