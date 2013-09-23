@@ -4,27 +4,10 @@ require 'fileutils'
 
 app = 'calm-plains-7356'
 
-# Returns true if all files are committed to git repo.
-def git_clean
-  status = %x{git status 2> /dev/null}
-  return status =~ /working directory clean/
-end
-
 namespace :publish do
   desc "Compile application"
   task :compile do
-    fail "Please commit all changes before release." if !git_clean()
-    #sh %{RAILS_ENV=production bundle exec rake assets:precompile}
     system("bundle exec rake assets:precompile RAILS_ENV=production") or fail
-    #ActiveRecord::Base.establish_connection('production')
-    #Rake::Task["assets:precompile"].invoke
-    #ActiveRecord::Base.establish_connection(ENV['RAILS_ENV'])
-  end
-
-  desc "Commit assets to repo"
-  task :commitassets => :compile do
-    sh %{git add public/assets}
-    sh %{git commit -m "Commit compiled assets."}
   end
 
   desc "Push to heroku"
@@ -50,6 +33,6 @@ namespace :publish do
   end
 
   desc "Release app to heroku"
-  task :release => ['publish:commitassets', 'publish:push', 'publish:migrate', 'publish:restart', 'publish:tag']
+  task :release => ['publish:push', 'publish:migrate', 'publish:restart', 'publish:tag']
 end
 

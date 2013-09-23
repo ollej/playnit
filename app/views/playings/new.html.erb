@@ -1,9 +1,9 @@
 <%= javascript_tag do -%>
   $(document).ready(function() {
     var geo = new GeoLocator("#map", function (position) {
-      $('#playing_latitude').val(position.coords.latitude)
       $('#playing_longitude').val(position.coords.longitude)
-    });
+      $('#playing_latitude').val(position.coords.latitude)
+    }).locate();
   });
 <% end -%>
 <h1>New playing</h1>

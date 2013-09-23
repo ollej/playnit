@@ -1,3 +1,15 @@
+<%= javascript_tag do -%>
+  $(document).ready(function() {
+    var geo = new GeoLocator("#map");
+    geo.addMap({
+      coords: {
+        latitude: '<%= @playing.latitude %>',
+        longitude: '<%= @playing.longitude %>'
+      }
+    })
+  });
+<% end -%>
+
 <p>
   <b>Game:</b>
   <%= @playing.game %>
@@ -13,6 +25,7 @@
   <%= @playing.content %>
 </p>
 
+<div id="map">No position available.</div>
 
 <!--
 <#= link_to 'Edit', edit_playing_path(@playing) #> |

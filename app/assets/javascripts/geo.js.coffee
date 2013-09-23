@@ -2,7 +2,7 @@ class GeoLocator
   constructor: (@sel, @callback) ->
     @div = $(sel)
     @callback = callback
-    @locate()
+    # TODO: callback should be event
 
   gotPosition: (position) =>
     @position = position
@@ -18,6 +18,7 @@ class GeoLocator
     @position
 
   addMap: (position) ->
+    return if position.coords.latitude == "0.0" && position.coords.longitude == "0.0"
     $mapDiv = $('<div>', {
       id: 'mapcanvas',
       width: 640,
@@ -44,6 +45,7 @@ class GeoLocator
       navigator.geolocation.getCurrentPosition(@gotPosition, @gotNoPosition)
     else
       console.log('not supported')
+    this
 
 (exports ? this).GeoLocator = GeoLocator
 
