@@ -13,6 +13,7 @@ gem 'authlogic'
 gem 'devise'
 gem 'eco'
 gem 'newrelic_rpm'
+gem 'heroku'
 
 
 # Gems used only for assets and not required
