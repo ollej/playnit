@@ -3,8 +3,8 @@
     var geo = new GeoLocator("#map");
     geo.addMap({
       coords: {
-        latitude: '<%= @playing.latitude %>',
-        longitude: '<%= @playing.longitude %>'
+        latitude: Number('<%= @playing.latitude %>'),
+        longitude: Number('<%= @playing.longitude %>')
       }
     })
   });

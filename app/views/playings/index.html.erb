@@ -19,7 +19,7 @@
     <td><%= playing.location %></td>
     <td><%= playing.content %></td>
     <td><%= link_to "Map", playing.map_link, target: '_blank' %></td>
-    <td><%= link_to 'Show', playing %></td>
+    <td><%= link_to 'Show', playing if playing.has_location %></td>
     <% if user_signed_in? and current_user == playing.user %>
     <td><%= link_to 'Edit', edit_playing_path(playing) %></td>
     <td><% link_to 'Destroy', playing, method: :delete, data: { confirm: 'Are you sure?' } %></td>

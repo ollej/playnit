@@ -16,6 +16,10 @@ class Playing < ActiveRecord::Base
     "#{latitude},#{longitude}"
   end
 
+  def has_location
+    latitude > 0 && longitude > 0
+  end
+
   def map_link
     "http://maps.google.com/maps?ie=UTF8&t=h&z=15&q=#{coords}"
   end

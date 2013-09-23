@@ -17,8 +17,11 @@ class GeoLocator
   getPosition: ->
     @position
 
+  validPosition: (position) ->
+    position && position.coords && position.coords.latitude > 0 && position.coords.longitude > 0
+
   addMap: (position) ->
-    return if position.coords.latitude == "0.0" && position.coords.longitude == "0.0"
+    return unless @validPosition(position)
     $mapDiv = $('<div>', {
       id: 'mapcanvas',
       width: 640,
