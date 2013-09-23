@@ -14,6 +14,7 @@ gem 'devise'
 gem 'eco'
 gem 'newrelic_rpm'
 gem 'heroku'
+gem 'shotgun'
 
 
 # Gems used only for assets and not required
@@ -25,7 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
+#gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -34,7 +35,7 @@ gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'unicorn-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
