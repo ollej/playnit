@@ -1,4 +1,7 @@
 class GeoLocator
+  map: {}
+  latlngs: []
+
   constructor: (@sel, @callback) ->
     @div = $(sel)
     @callback = callback
@@ -20,28 +23,55 @@ class GeoLocator
   validPosition: (position) ->
     position && position.coords && position.coords.latitude > 0 && position.coords.longitude > 0
 
-  addMap: (position) ->
+  positionToLatLng: (position) ->
     return unless @validPosition(position)
+    new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+  addMap: (positions) ->
+    console.log 'addMap', positions
+    positions = [positions] unless _.isArray(positions) 
+    console.log 'positions', positions
+    center = @positionToLatLng(positions[0])
+    @addEmptyMap(center)
+    @addPositionsAsMarkers(positions)
+    this
+
+  addPositionsAsMarkers: (positions) ->
+    console.log 'addPositionsAsMarkers', positions
+    for position in positions
+      if @validPosition(position)
+        latlng = @positionToLatLng(position)
+        @addMarker(latlng) 
+    this
+
+  addEmptyMap: (center) ->
+    console.log 'addEmptyMap', center
     $mapDiv = $('<div>', {
       id: 'mapcanvas',
       width: 640,
       height: 480
     })
-    latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     options = {
       zoom: 15,
-      center: latlng,
+      center: center
       mapTypeControl: false,
       navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-    map = new google.maps.Map($mapDiv[0], options);
+    @map = new google.maps.Map($mapDiv[0], options);
+    @div.replaceWith($mapDiv)
+    this
+
+  addMarker: (latlng) ->
+    return unless @map?
+    console.log 'addMarker', latlng
     marker = new google.maps.Marker({
       position: latlng,
-      map: map,
-      title: "You are here! (at least within a #{position.coords.accuracy} meter radius)"
+      map: @map,
+      title: "You are here!"
     });
-    @div.replaceWith($mapDiv)
+    @latlngs.push(latlng)
+    this
 
   locate: =>
     if navigator.geolocation

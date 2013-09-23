@@ -27,6 +27,7 @@ end
 
 gem 'jquery-rails'
 #gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
+gem 'underscore-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
