@@ -2,19 +2,13 @@
   $(document).ready(function() {
     var geo = new GeoLocator("#map");
     geo.addMap([
-    {
-      coords: {
-        latitude: Number('<%= @playing.latitude %>'),
-        longitude: Number('<%= @playing.longitude %>')
+      {
+        coords: {
+          latitude: Number('<%= @playing.latitude %>'),
+          longitude: Number('<%= @playing.longitude %>')
+        }
       }
-    },
-    {
-      coords: {
-        latitude: Number('<%= @playing.latitude %>') + 0.005,
-        longitude: Number('<%= @playing.longitude %>') + 0.005
-      }
-    },
-      ])
+    ])
   });
 <% end -%>
 
