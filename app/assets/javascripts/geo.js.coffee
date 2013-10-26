@@ -2,7 +2,7 @@ class GeoLocator
   map: {}
   latlngs: []
   width: 380 
-  height: 320
+  height: 260
   options:
     zoom: 15
     mapTypeControl: false
