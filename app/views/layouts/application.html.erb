@@ -60,9 +60,11 @@
 
             <div id="menu">
               <ul class="nav">
+                  <li><%= link_to glyph('home') + ' Home', root_path, class: 'navbar-link' %></li>
+                  <li><%= link_to glyph('th-list') + ' Playings', playings_path, class: 'navbar-link' %></li>
                 <% if user_signed_in? %>
-                  <li><%= glyph('user') %> <%= current_user.email %></li>
-                  <li><%= link_to glyph('cog') + ' Edit profile', edit_user_registration_path, class: 'navbar-link' %></li>
+                  <!-- <li><%= link_to glyph('user') + ' ' + current_user.email, class: 'navbar-link' %></li> -->
+                  <li><%= link_to glyph('user') + ' Edit profile', edit_user_registration_path, class: 'navbar-link' %></li>
                   <li><%= link_to glyph('off') + " Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %></li>
                 <% else %>
                   <li><%= link_to glyph('user') + " Sign up", new_user_registration_path, class: 'navbar-link'  %></li>
@@ -107,7 +109,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; Playn.it 2013</p>
       </footer>
 
     </div> <!-- /container -->

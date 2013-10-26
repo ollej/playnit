@@ -8,8 +8,14 @@
 <% end -%>
 <h1>New playing</h1>
 
-<%= render 'form' %>
+<div class="row-fluid">
+  <div class="well span6">
+    <%= render 'form' %>
+  </div>
 
-<div id="map"><%= image_tag "loading.gif" %></div>
+  <div class="well span6">
+    <div id="map"><%= image_tag "loading.gif" %></div>
+  </div>
+</div>
 
 <%= link_to 'Back', playings_path %>

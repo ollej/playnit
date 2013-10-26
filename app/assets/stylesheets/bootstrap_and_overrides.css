@@ -5,3 +5,16 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+.form-horizontal .control-label {
+  width: 80px;
+}
+.form-horizontal .controls {
+  margin-left: 100px;
+}
+.form-horizontal form {
+  margin-bottom: 0;
+}
+.form-horizontal form .control-group:last-child {
+  margin-bottom: 0;
+}

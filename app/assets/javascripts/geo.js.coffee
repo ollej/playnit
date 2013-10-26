@@ -1,10 +1,20 @@
 class GeoLocator
   map: {}
   latlngs: []
+  width: 380 
+  height: 320
+  options:
+    zoom: 15
+    mapTypeControl: false
+    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
+    mapTypeId: google.maps.MapTypeId.ROADMAP
 
-  constructor: (@sel, @callback) ->
+  constructor: (@sel, @callback, options) ->
     @div = $(sel)
     @callback = callback
+    console.log @options
+    if options
+      @options = _.extend(@options, options)
     # TODO: callback should be event
 
   gotPosition: (position) =>
@@ -48,17 +58,12 @@ class GeoLocator
     console.log 'addEmptyMap', center
     $mapDiv = $('<div>', {
       id: 'mapcanvas',
-      width: 640,
-      height: 480
+      width: @width,
+      height: @height
     })
-    options = {
-      zoom: 15,
-      center: center
-      mapTypeControl: false,
-      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    @map = new google.maps.Map($mapDiv[0], options);
+    console.log(@options)
+    options = _.extend({}, @options, { center: center })
+    @map = new google.maps.Map($mapDiv[0], options)
     @div.replaceWith($mapDiv)
     this
 

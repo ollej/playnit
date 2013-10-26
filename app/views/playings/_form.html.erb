@@ -1,4 +1,4 @@
-<%= form_for(@playing) do |f| %>
+<%= form_for(@playing, :html => { :class => 'form-horizontal' }) do |f| %>
   <% if @playing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@playing.errors.count, "error") %> prohibited this playing from being saved:</h2>
@@ -11,24 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :game %><br />
-    <%= f.text_field :game %>
+  <div class="field control-group">
+    <%= f.label :game, nil, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :game %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :location, 'Where' %><br />
-    <%= f.text_field :location %>
+  <div class="field control-group">
+    <%= f.label :location, 'Where', class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :position, 'Position' %><br />
-    <%= f.text_field :latitude %>
-    <%= f.text_field :longitude %>
+  <div class="field control-group">
+    <%= f.label :position, 'Position', class: 'control-label' %>
+    <div class="controls">
+      <div class="input-prepend input-append">
+      <%= f.text_field :latitude, size: '5', class: 'input-small' %>
+      <span class="add-on">@</span>
+      <%= f.text_field :longitude, size: '5', class: 'input-small' %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :content, 'Note' %><br />
-    <%= f.text_area :content %>
+  <div class="field control-group">
+    <%= f.label :content, 'Note', class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :content, size: '35x4' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions controls">
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <i class="icon-ok icon-white"></i> Create playing
+    <% end %>
   </div>
 <% end %>
