@@ -15,6 +15,7 @@ gem 'eco'
 gem 'newrelic_rpm'
 gem 'heroku'
 gem 'shotgun'
+gem "twitter-bootstrap-rails"
 
 
 # Gems used only for assets and not required
