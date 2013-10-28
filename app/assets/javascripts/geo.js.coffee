@@ -54,8 +54,8 @@ class GeoLocator
     latlngbounds = new google.maps.LatLngBounds()
     for position in positions
       latlng = @positionToLatLng(position)
+      console.log 'setBounds', position, latlng
       latlngbounds.extend(latlng)
-    console.log('setBounds @map', @map)
     @map.setCenter latlngbounds.getCenter()
     @map.fitBounds latlngbounds
 
@@ -77,7 +77,6 @@ class GeoLocator
     console.log(@options)
     options = _.extend({}, @options)
     @map = new google.maps.Map($mapDiv[0], options)
-    console.log('addEmptyMap', map)
     @div.replaceWith($mapDiv)
     this
 

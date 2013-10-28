@@ -16,6 +16,10 @@ class Playing < ActiveRecord::Base
     "#{latitude},#{longitude}"
   end
 
+  def position
+    { coords: { latitude: latitude, longitude: longitude } }
+  end
+
   def has_location
     latitude > 0 && longitude > 0
   end
