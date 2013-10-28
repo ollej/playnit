@@ -4,7 +4,6 @@ class GeoLocator
   width: 380 
   height: 260
   options:
-    zoom: 15
     mapTypeControl: false
     navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
     mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -27,26 +26,40 @@ class GeoLocator
   gotNoPosition: (error) =>
     console.log(error)
 
-  getPosition: ->
+  getPosition: =>
     @position
 
-  validPosition: (position) ->
+  validPosition: (position) =>
     position && position.coords && position.coords.latitude > 0 && position.coords.longitude > 0
 
-  positionToLatLng: (position) ->
+  positionToLatLng: (position) =>
     return unless @validPosition(position)
     new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-  addMap: (positions) ->
-    console.log 'addMap', positions
+  addMap: (positions) =>
+    console.log 'addMap positions', positions
     positions = [positions] unless _.isArray(positions) 
     console.log 'positions', positions
-    center = @positionToLatLng(positions[0])
-    @addEmptyMap(center)
+    @addEmptyMap()
+    console.log('addMap @map', @map)
+    if positions.length == 1
+      @map.setCenter(@positionToLatLng(positions[0]))
+      @map.setZoom(15)
+    else
+      @setBounds(positions)
     @addPositionsAsMarkers(positions)
     this
 
-  addPositionsAsMarkers: (positions) ->
+  setBounds: (positions) =>
+    latlngbounds = new google.maps.LatLngBounds()
+    for position in positions
+      latlng = @positionToLatLng(position)
+      latlngbounds.extend(latlng)
+    console.log('setBounds @map', @map)
+    @map.setCenter latlngbounds.getCenter()
+    @map.fitBounds latlngbounds
+
+  addPositionsAsMarkers: (positions) =>
     console.log 'addPositionsAsMarkers', positions
     for position in positions
       if @validPosition(position)
@@ -54,20 +67,21 @@ class GeoLocator
         @addMarker(latlng) 
     this
 
-  addEmptyMap: (center) ->
-    console.log 'addEmptyMap', center
+  addEmptyMap: =>
+    console.log 'addEmptyMap'
     $mapDiv = $('<div>', {
       id: 'mapcanvas',
       width: @width,
       height: @height
     })
     console.log(@options)
-    options = _.extend({}, @options, { center: center })
+    options = _.extend({}, @options)
     @map = new google.maps.Map($mapDiv[0], options)
+    console.log('addEmptyMap', map)
     @div.replaceWith($mapDiv)
     this
 
-  addMarker: (latlng) ->
+  addMarker: (latlng) =>
     return unless @map?
     console.log 'addMarker', latlng
     marker = new google.maps.Marker({
