@@ -63,6 +63,7 @@ module Playnit
     config.assets.initialize_on_precompile = false
 
     # User redis cache store
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
+    redis_ip = ENV['REDIS_IP'] || 'localhost:6379'
+    config.cache_store = :redis_store, "redis://#{redis_ip}/0/cache", { expires_in: 90.minutes }
   end
 end
