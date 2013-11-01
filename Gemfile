@@ -7,14 +7,13 @@ gem 'rails', '3.2.14'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'thin'
+#gem 'thin'
 gem 'authlogic'
 #gem 'sqlite3'
 gem 'devise'
 gem 'eco'
 gem 'newrelic_rpm'
 gem 'heroku'
-gem 'shotgun'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'redis-rails'
@@ -47,8 +46,13 @@ gem 'unicorn-rails'
 group(:development) do
   # To use debugger
   gem 'debugger'
+  gem 'shotgun'
 end
 
 group(:test) do
   gem 'sqlite3'
+end
+
+group(:production) do
+  gem 'rails_12factor'
 end
