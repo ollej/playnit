@@ -61,5 +61,8 @@ module Playnit
 
     # Don't connect to db when compiling assets
     config.assets.initialize_on_precompile = false
+
+    # User redis cache store
+    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
   end
 end

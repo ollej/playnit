@@ -17,6 +17,7 @@ gem 'heroku'
 gem 'shotgun'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
+gem 'redis-rails'
 
 
 # Gems used only for assets and not required
