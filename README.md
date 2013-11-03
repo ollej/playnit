@@ -1,7 +1,7 @@
 playnit
 =======
 
-Social gaming checkins. And stuff.
+Social gaming checkins.
 
 Contact us at: i.am@playn.it
 
