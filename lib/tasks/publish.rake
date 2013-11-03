@@ -4,8 +4,6 @@ require 'fileutils'
 
 app = 'calm-plains-7356'
 
-task "assets:precompile" => "db:migrate"
-
 namespace :publish do
   desc "Compile application"
   task :compile do
