@@ -1,4 +1,8 @@
 Playnit::Application.routes.draw do
+  get "game/index"
+
+  get "game/show"
+
   devise_for :users
 
   resources :playings, :only => [:new, :create, :index, :show, :destroy, :edit, :update]

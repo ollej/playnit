@@ -17,6 +17,7 @@ gem 'heroku'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'redis-rails'
+gem 'bgg-api'
 
 
 # Gems used only for assets and not required

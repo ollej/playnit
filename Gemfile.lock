@@ -35,6 +35,9 @@ GEM
       activerecord (>= 3.2)
       activesupport (>= 3.2)
     bcrypt-ruby (3.1.2)
+    bgg-api (0.0.2)
+      httparty
+      xml-simple
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -73,6 +76,9 @@ GEM
     heroku-api (0.3.15)
       excon (~> 0.25.1)
     hike (1.2.3)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.5)
     journey (1.0.4)
     jquery-rails (3.0.4)
@@ -88,6 +94,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25)
     multi_json (1.8.2)
+    multi_xml (0.5.5)
     netrc (0.7.7)
     newrelic_rpm (3.6.8.168)
     orm_adapter (0.4.0)
@@ -187,12 +194,14 @@ GEM
       unicorn
     warden (1.2.3)
       rack (>= 1.0)
+    xml-simple (1.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   authlogic
+  bgg-api
   coffee-rails (~> 3.2.1)
   debugger
   devise
