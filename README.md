@@ -20,6 +20,6 @@ Installation
  $ cd playnit
  $ bundle install
  $ git remote add dokku dokku@example.com:playnit
- $ export DEVISE_SECRET_KEY="`rake secret`"
- $ export SECRET_TOKEN="`rake secret`"
+ $ ssh -t example.com dokku config:set DEVISE_SECRET_KEY="`rake secret`"
+ $ ssh -t example.com dokku config:set SECRET_TOKEN="`rake secret`"
  $ git push dokku master
