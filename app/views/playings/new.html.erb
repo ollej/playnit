@@ -1,12 +1,18 @@
 <h1>New playing</h1>
 
-<div class="row-fluid">
-  <div class="well span6">
-    <%= render 'form' %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="well">
+      <%= render 'form' %>
+    </div>
   </div>
 
-  <div class="well span6">
-    <div id="map-edit"><%= image_tag "loading.gif" %></div>
+  <div class="row-fluid">
+    <div class="well">
+      <div class="map-container">
+        <div id="map-edit"><%= image_tag "loading.gif" %></div>
+      </div>
+    </div>
   </div>
 </div>
 

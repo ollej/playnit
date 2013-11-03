@@ -49,8 +49,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <!-- <a class="brand" href="#">Playnit</a> -->
-          <div class="container-fluid nav-collapse">
+          <a class="brand" href="#">Playn.it</a>
+          <%= link_to glyph('plus') + " Play'n it!", new_playing_path, class: 'btn btn-primary' %>
+          <div class="container-fluid nav-collapse  pull-left">
 
             <div id="menu">
               <ul class="nav">
@@ -65,34 +66,19 @@
                 <% end %>
               </ul>
             </div><!-- /.menu -->
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+          </div><!-- /.nav-collapse -->
+        </div><!-- .container-fluid -->
+      </div><!-- /.navbar-inner -->
+    </div><!-- /.navbar -->
 
     <div class="container-fluid">
-      <div class="row-fluid">
-        <!--
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div>
-        </div>
-        -->
-        <div class="container-fluid">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
 
-      <footer>
-        <p>&copy; Playn.it 2013</p>
-      </footer>
+    <footer>
+      <p>&copy; Playn.it 2013</p>
+    </footer>
 
     </div> <!-- /container -->
 

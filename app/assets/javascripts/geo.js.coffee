@@ -1,8 +1,8 @@
 class GeoLocator
   map: {}
   latlngs: []
-  width: 380 
-  height: 260
+  width: 640
+  height: 480
   options:
     mapTypeControl: false
     navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}

@@ -3,6 +3,8 @@ class Playing < ActiveRecord::Base
   belongs_to :user
 
   validates :game,    :presence => true
+  validates :latitude, :presence => true
+  validates :longitude, :presence => true
   validates :content, :presence => true,
                       :length => { :minimum => 3 }
 

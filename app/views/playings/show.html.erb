@@ -1,35 +1,41 @@
-<%= javascript_tag do -%>
-  $(document).ready(function() {
-    var geo = new GeoLocator("#map");
-    geo.addMap([
-      {
-        coords: {
-          latitude: Number('<%= @playing.latitude %>'),
-          longitude: Number('<%= @playing.longitude %>')
-        }
-      }
-    ])
-  });
-<% end -%>
+<div class="container-fluid">
+  <div class="well well-small">
+    <div class="row-fluid">
+      <div class="map-container">
+        <div id="map-show">No position available.</div>
+      </div>
+      <div class="">
+        <h3>
+        <% if @playing.has_location %>
+          <%= link_to @playing.game, @playing %>
+        <% else %>
+          <%= @playing.game %>
+        <% end %>
+        </h3>
+      </div>
+      <div class="pull-right">
+        <% if user_signed_in? and current_user == @playing.user %>
+        <%= link_to glyph('edit') + ' Edit', edit_playing_path(@playing), class: 'btn btn-mini btn-primary' %>
+        <%= link_to glyph('remove') + ' Delete', @playing, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span3"><%= @playing.location %></div>
+      <div class="span7"><%= @playing.content %></div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>Game:</b>
-  <%= @playing.game %>
-</p>
-
-<p>
-  <b>Where:</b>
-  <%= @playing.location %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%= @playing.content %>
-</p>
-
-<div id="map">No position available.</div>
 
 <!--
 <#= link_to 'Edit', edit_playing_path(@playing) #> |
 -->
 <%= link_to 'Back', playings_path %>
+
+<script type="text/javascript" charset="utf-8">
+    //<![CDATA[
+    var position = $.parseJSON('<%=j @playing.position.to_json.html_safe %>');
+    // ]]>
+</script>
+
