@@ -41,12 +41,6 @@
   </head>
   <body>
 
-  <div id="global">
-
-    <header id="header" class="no-submenu" lang="en">
-      <h1 class="text">playn.it</h1>
-    </header>
-
     <div class="navbar navbar-fluid-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -91,19 +85,8 @@
         </div>
         -->
         <div class="container-fluid">
-
-          <div id="globalbox" class="layout-fullpage-simple">
-            <article id="main"><div class="columns">
-              <div lang="en" class="box box-fbox rcol">
-
-                <%= bootstrap_flash %>
-                <%= yield %>
-
-               </div></div>
-             </article>
-
-          </div><!--/#globalbox-->
-
+          <%= bootstrap_flash %>
+          <%= yield %>
         </div>
       </div><!--/row-->
 
