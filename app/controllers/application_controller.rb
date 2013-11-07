@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def require_token
-    unless session[:session_token].present?
-      session[:session_token] = generate_token
+    def require_token
+      unless session[:session_token].present?
+        session[:session_token] = generate_token
+      end
     end
-  end
 end

@@ -8,8 +8,8 @@ Contact us at: i.am@playn.it
 Requires
 --------
 
- * Ruby 1.9.3
- * Rails 3
+ * Ruby 2.0.0
+ * Rails 4.0
  * Postgres
  * Redis
 

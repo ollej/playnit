@@ -42,7 +42,7 @@ class PlayingsController < ApplicationController
   # POST /playings
   # POST /playings.json
   def create
-    @playing = Playing.new(params[:playing])
+    @playing = Playing.new(playing_params)
     @playing.session_token = session[:session_token]
 
     if user_signed_in?
@@ -66,7 +66,7 @@ class PlayingsController < ApplicationController
     @playing = current_user.playing.find(params[:id])
 
     respond_to do |format|
-      if @playing.update_attributes(params[:playing])
+      if @playing.update_attributes(playing_params)
         format.html { redirect_to @playing, notice: 'Playing was successfully updated.' }
         format.json { head :no_content }
       else
@@ -87,4 +87,9 @@ class PlayingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def playing_params
+      params.require(:playing).permit(:content, :game, :location, :latitude, :longitude)
+    end
 end
