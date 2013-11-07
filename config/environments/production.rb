@@ -69,5 +69,4 @@ Playnit::Application.configure do
   config.action_mailer.default_url_options = { :host => 'playn.it' }
 
   config.eager_load = true
-  config.whiny_nils = true
 end
