@@ -12,7 +12,7 @@ Playnit::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.js_compressor = false
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
@@ -67,4 +67,7 @@ Playnit::Application.configure do
 
   # devise default url options
   config.action_mailer.default_url_options = { :host => 'playn.it' }
+
+  config.eager_load = true
+  config.whiny_nils = true
 end
