@@ -20,6 +20,13 @@
     </div>
   </div>
   <div class="field control-group">
+    <%= f.label :photo, 'Photo', class: 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :photo %>
+      <%= f.hidden_field :photo_cache %>
+    </div>
+  </div>
+  <div class="field control-group">
     <%= f.label :location, 'Where', class: 'control-label' %>
     <div class="controls">
       <%= f.text_field :location %>

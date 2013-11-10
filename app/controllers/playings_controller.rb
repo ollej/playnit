@@ -90,6 +90,7 @@ class PlayingsController < ApplicationController
 
   private
     def playing_params
-      params.require(:playing).permit(:content, :game, :location, :latitude, :longitude)
+      params.require(:playing).permit(:content, :game, :location, :latitude, :longitude,
+                                      :photo, :photo_cache)
     end
 end

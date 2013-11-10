@@ -13,7 +13,12 @@
   <% @playings.each do |playing| %>
   <div class="well well-small">
     <div class="row-fluid">
-      <div class="">
+      <% unless playing.photo.thumb.url.blank? %>
+      <div class="playing-photo-thumb">
+        <%= image_tag playing.photo.thumb.url, class: 'img-polaroid' %>
+      </div>
+      <% end %>
+      <div class="playing-content">
         <h3>
         <% if playing.has_location %>
           <%= link_to playing.game, playing %>
