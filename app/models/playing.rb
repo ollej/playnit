@@ -7,8 +7,6 @@ class Playing < ActiveRecord::Base
   validates :game,    :presence => true
   validates :latitude, :presence => true
   validates :longitude, :presence => true
-  validates :content, :presence => true,
-                      :length => { :minimum => 3 }
 
   def self.associate_by_session_token(token, user)
     where(:session_token => token, :user_id => nil).each do |p|

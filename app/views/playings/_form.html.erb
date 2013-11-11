@@ -2,8 +2,8 @@
   <%= f.hidden_field :latitude %>
   <%= f.hidden_field :longitude %>
   <% if @playing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@playing.errors.count, "error") %> prohibited this playing from being saved:</h2>
+    <div class="alert alert-error">
+      <h3>Please review the following</h3>
 
       <ul>
       <% @playing.errors.full_messages.each do |msg| %>
@@ -22,7 +22,7 @@
   <div class="field control-group">
     <%= f.label :photo, 'Photo', class: 'control-label' %>
     <div class="controls">
-      <%= f.file_field :photo %>
+      <%= f.file_field :photo, accept: "image/*", capture: true %>
       <%= f.hidden_field :photo_cache %>
     </div>
   </div>
