@@ -1,11 +1,12 @@
+require 'carrierwave/orm/activerecord'
+
 class Playing < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
   belongs_to :user
 
   validates :game,    :presence => true
   validates :latitude, :presence => true
   validates :longitude, :presence => true
-  validates :content, :presence => true,
-                      :length => { :minimum => 3 }
 
   def self.associate_by_session_token(token, user)
     where(:session_token => token, :user_id => nil).each do |p|
