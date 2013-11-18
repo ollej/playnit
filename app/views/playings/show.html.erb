@@ -33,7 +33,7 @@
       <div class="pull-right">
         <a href="https://twitter.com/share" class="twitter-share-button"
           data-url="<%= "http://playn.it" + url_for(@playing) %>" data-size="large" data-count="none"
-          data-text="Play'n <%= @playing.game %>. <%= @playing.content %>" data-dnt="true">Share on Twitter</a>
+          data-text="Play'n <%= @playing.game %>. <%= @playing.content if current_user == @playing.user %>" data-dnt="true">Share on Twitter</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       </div>
     </div>
