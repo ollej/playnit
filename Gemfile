@@ -16,6 +16,7 @@ gem 'therubyracer'
 gem 'redis-rails'
 gem 'bgg-api'
 gem 'fog'
+gem 'unf'
 gem 'carrierwave'
 gem 'mini_magick'
 
