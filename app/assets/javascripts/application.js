@@ -15,3 +15,7 @@
 //= require underscore
 //= require twitter/bootstrap
 //= require_tree .
+//= require moxie
+//= require plupload.dev
+//= require plupload.settings
+//= require jquery.plupload.queue

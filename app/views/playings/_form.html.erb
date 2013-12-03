@@ -1,3 +1,36 @@
+<%= javascript_tag do %>
+    $(function(){
+        var uploader = $('#uploader').pluploadQueue({
+            runtimes : "html5,flash",
+            max_image_size : '1mb',
+            unique_names : true,
+            multipart: true,
+            preinit: attachCallbacks,
+            multipart_params: {
+                authenticity_token : '<%=j form_authenticity_token %>',
+                filename: 'filename',
+                utf8: true,
+                AWSAccessKeyId: "<%=j aws_access_key_id %>",
+                acl: "<%=j aws_acl %>",
+                policy: "<%=j aws_policy %>",
+                signature: "<%=j aws_signature %>",
+                key: "<%=j aws_upload_path %>/${filename}",
+            },
+            flash_swf_url : '/plupload/js/plupload.flash.swf',
+            url : "<%=j aws_endpoint %>",
+            file_name_name: false
+        }); //end initial script
+
+        //redirect after complete
+        function attachCallbacks(uploader) {
+            uploader.bind('FileUploaded', function(up, file, response) {
+              console.log("File uploaded", up, file, response);
+            });
+        }
+    }); //end function
+<% end %>
+
+
 <%= form_for(@playing, :html => { :class => 'form-horizontal' }) do |f| %>
   <%= f.hidden_field :latitude %>
   <%= f.hidden_field :longitude %>
@@ -22,6 +55,7 @@
   <div class="field control-group">
     <%= f.label :photo, 'Photo', class: 'control-label' %>
     <div class="controls">
+      <div class="uploader" id="uploader"></div>
       <%= f.file_field :photo, accept: "image/*", capture: true %>
       <%= f.hidden_field :photo_cache %>
     </div>

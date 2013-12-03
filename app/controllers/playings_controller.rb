@@ -1,4 +1,6 @@
 class PlayingsController < ApplicationController
+  include AwsHelper
+
   before_filter :authenticate_user!, :only => [:destroy, :edit, :update]
 
   # GET /playings
