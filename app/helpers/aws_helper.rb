@@ -34,6 +34,7 @@ module AwsHelper
       ["starts-with", "$filename", ""],
       ["starts-with", "$name", ""],
       ["starts-with", "$authenticity_token", ""],
+      ["starts-with", "$success_action_status", ""],
       { "bucket" => aws_bucket },
       { "acl" => aws_acl }
     ]
