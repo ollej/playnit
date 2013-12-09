@@ -55,7 +55,6 @@
 
             <div id="menu">
               <ul class="nav">
-                  <li><%= link_to glyph('home') + ' Home', root_path, class: 'navbar-link' %></li>
                 <% if user_signed_in? %>
                   <!-- <li><%= link_to glyph('user') + ' ' + current_user.email, class: 'navbar-link' %></li> -->
                   <li><%= link_to glyph('user') + ' Edit profile', edit_user_registration_path, class: 'navbar-link' %></li>
