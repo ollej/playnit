@@ -14,11 +14,13 @@
   <div class="well well-small">
     <div class="row-fluid">
       <% unless playing.photo.thumb.url.blank? %>
-      <div class="playing-photo-thumb">
+      <div class="photo-thumb">
         <%= image_tag playing.photo.thumb.url, class: 'img-polaroid' %>
       </div>
       <% end %>
-      <div class="playing-content">
+    </div>
+    <div class="row-fluid">
+      <div class="title span6">
         <h3>
         <% if playing.has_location %>
           <%= link_to playing.game, playing %>
@@ -27,16 +29,21 @@
         <% end %>
         </h3>
       </div>
-      <div class="pull-right">
-        <% if user_signed_in? and current_user == playing.user %>
-        <%= link_to glyph('edit') + ' Edit', edit_playing_path(playing), class: 'btn btn-mini btn-primary' %>
-        <%= link_to glyph('remove') + ' Delete', playing, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
-        <% end %>
+      <div class="pull-right span3">
+        <div class="pull-right toolbar">
+          <% if user_signed_in? and current_user == playing.user %>
+          <%= link_to glyph('edit') + ' Edit', edit_playing_path(playing), class: 'btn btn-mini btn-primary' %>
+          <%= link_to glyph('remove') + ' Delete', playing, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span3"><%= playing.location %></div>
-      <div class="span7"><%= playing.content %></div>
+    <div class="row-fluid metadata">
+      <%= playing.location %>,
+      <%= distance_of_time_in_words_to_now(playing.created_at) %>
+    </div>
+    <div class="row-fluid content">
+      <%= playing.content %>
     </div>
   </div>
   <% end %>
