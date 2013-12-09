@@ -45,6 +45,9 @@ class PlayingsController < ApplicationController
   # POST /playings.json
   def create
     @playing = Playing.new(playing_params)
+    photo = URI.unescape(playing_params[:remote_photo_url] || "")
+    logger.debug("Uploaded photo URL: #{photo}")
+    #@playing.raw_write_attribute(:photo, URI.unescape(playing_params[:photo]))
     @playing.session_token = session[:session_token]
 
     if user_signed_in?
@@ -93,6 +96,6 @@ class PlayingsController < ApplicationController
   private
     def playing_params
       params.require(:playing).permit(:content, :game, :location, :latitude, :longitude,
-                                      :photo, :photo_cache)
+                                      :photo, :photo_cache, :remote_photo_url)
     end
 end

@@ -1,6 +1,7 @@
 <%= form_for(@playing, :html => { :class => 'form-horizontal' }) do |f| %>
   <%= f.hidden_field :latitude %>
   <%= f.hidden_field :longitude %>
+  <%= f.hidden_field :photo_cache %>
   <% if @playing.errors.any? %>
     <div class="alert alert-error">
       <h3>Please review the following</h3>

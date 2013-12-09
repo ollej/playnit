@@ -15,8 +15,8 @@ class Uploader
       filename: "filename"
       utf8: true
     resize:
-      width: 640
-      height: 480
+      width: 580
+      height: 440
       quality: 90
 
   constructor: (options) ->
@@ -25,32 +25,44 @@ class Uploader
     @bindListeners()
     this
 
+  showPhoto: (location) ->
+    img = $('<img></img>')
+      .prop('src', location)
+      .prop('class', 'img-polaroid')
+    $("#photo").html(img)
+    this
+
+  addPhoto: (photo) ->
+    $photo = $("<input>", {type:'hidden', name: "playing[remote_photo_url]", value: photo})
+    $("#new_playing").append($photo)
+
+  onFileUploaded: (up, file, response) ->
+    #console.log 'File uploaded!', up, file, response
+    src = file.getSource()
+    #console.log('src', src)
+    result = @parseResponse(response.response)
+    #console.log("result", result)
+    @showPhoto(result.location)
+    @addPhoto(result.location)
+
   bindListeners: ->
     @uploader.bind "FilesAdded", (up, files) =>
-      console.log 'Files added:', up, files
+      #console.log 'Files added:', up, files
       $.each files, (i, file) =>
-        console.log 'File added:', file
+        #console.log 'File added:', file
       _.defer => up.start()
 
     @uploader.bind "BeforeUpload", (up, file) =>
       @setFilename(file)
 
     @uploader.bind 'FileUploaded', (up, file, response) =>
-      console.log 'File uploaded!', up, file, response
-      src = file.getSource()
-      console.log('src', src)
-      result = @parseResponse(response.response)
-      console.log("result", result)
-      img = $('<img></img>')
-        .prop('src', result.location)
-        .prop('class', 'img-polaroid')
-      $("#photo").prepend(img)
+      @onFileUploaded(up, file, response)
 
     @uploader.bind 'UploadProgress', (up, file) =>
-      console.log 'Upload progress:', up, file
+      #console.log 'Upload progress:', up, file
 
     @uploader.bind 'Error', (up, err) =>
-      console.log 'Upload Error', up, err
+      #console.log 'Upload Error', up, err
 
     this
 
@@ -59,12 +71,13 @@ class Uploader
     this
 
   setFilename: (file) ->
-    uniqueKey = ( "uploads/" + file.id + "/" + file.name );
-    @uploader.settings.multipart_params.key = uniqueKey;
-    @uploader.settings.multipart_params.Filename = uniqueKey; 
+    file.uniqueKey = ( "uploads/" + file.id + "/" + file.name );
+    @uploader.settings.multipart_params.key = file.uniqueKey;
+    @uploader.settings.multipart_params.Filename = file.uniqueKey; 
+    this
 
   parseResponse: (response) ->
-    console.log('response', response)
+    #console.log('response', response)
     result = {}
     pattern = /\<(Location|Bucket|Key)\>([^<]*)\<\/\1\>/gi
     matches = null
