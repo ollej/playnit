@@ -10,6 +10,7 @@ class Uploader
     rename: true
     sortable: true
     autostart: true
+    multi_selection: false
     multipart: true
     multipart_params:
       filename: "filename"
