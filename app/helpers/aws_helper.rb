@@ -24,7 +24,7 @@ module AwsHelper
   end
 
   def aws_endpoint
-    "https://#{aws_bucket}.s3.amazonaws.com:443"
+    "https://#{aws_bucket}.s3-eu-west-1.amazonaws.com:443"
   end
 
   def aws_policy
