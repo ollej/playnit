@@ -71,7 +71,9 @@
     </div><!-- /.navbar -->
 
     <div class="main-content container-fluid">
-      <%= bootstrap_flash %>
+      <div id="flash-container">
+        <%= bootstrap_flash %>
+      </div>
       <%= yield %>
     </div>
 

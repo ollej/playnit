@@ -4,9 +4,9 @@ class Playing < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   belongs_to :user
 
-  validates :game,    :presence => true
-  validates :latitude, :presence => true
-  validates :longitude, :presence => true
+  validates :game, :presence => true
+  #validates :latitude, :presence => true
+  #validates :longitude, :presence => true
 
   def self.associate_by_session_token(token, user)
     where(:session_token => token, :user_id => nil).each do |p|
@@ -23,7 +23,7 @@ class Playing < ActiveRecord::Base
   end
 
   def has_location
-    latitude > 0 && longitude > 0
+    latitude && latitude > 0 && longitude && longitude > 0
   end
 
   def map_link

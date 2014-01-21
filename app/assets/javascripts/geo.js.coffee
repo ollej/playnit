@@ -24,22 +24,29 @@ class GeoLocator
       @callback.call this, position
 
   gotNoPosition: (error) =>
-    console.log(error)
+    Flasher.warning("Failed to get position.")
+    @addMapUnavailable()
 
   getPosition: =>
     @position
 
   validPosition: (position) =>
-    position && position.coords && position.coords.latitude > 0 && position.coords.longitude > 0
+    position && position.coords && position.coords.latitude? && position.coords.longitude?
 
   positionToLatLng: (position) =>
     return unless @validPosition(position)
     new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+  addMapUnavailable: ->
+    $(".map-container").replaceWith("<div class='map-unavailable'></div>")
+
   addMap: (positions) =>
     console.log 'addMap positions', positions
     positions = [positions] unless _.isArray(positions) 
     console.log 'positions', positions
+    if (positions.length == 1 && !@validPosition(positions[0]))
+      @addMapUnavailable()
+      return this
     @addEmptyMap()
     console.log('addMap @map', @map)
     if positions.length == 1
@@ -95,7 +102,7 @@ class GeoLocator
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition(@gotPosition, @gotNoPosition)
     else
-      console.log('not supported')
+      Flasher.warning('No geolocation available.')
     this
 
 (exports ? this).GeoLocator = GeoLocator

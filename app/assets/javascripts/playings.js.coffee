@@ -1,4 +1,5 @@
 $(document).ready =>
+  console.log('playings ready')
   new PlayingsGeo().initGeo()
   $(".typeahead").typeahead
     minLength: 3

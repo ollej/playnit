@@ -22,9 +22,17 @@ class Uploader
 
   constructor: (options) ->
     @options = _.extend({}, @default_options, options)
+    unless (@fileApiAvailable())
+      console.log('no file api')
+      Flasher.warning('Photo uploads unavailable on this device.')
+      $("#photo-group").hide()
+      this
     @uploader = new plupload.Uploader(@options)
     @bindListeners()
     this
+
+  fileApiAvailable: ->
+    (window.File && window.FileReader && window.FileList && window.Blob)
 
   showPhoto: (location) ->
     img = $('<img></img>')

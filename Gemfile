@@ -22,6 +22,7 @@ gem 'mini_magick'
 gem 'plupload-rails'
 
 gem 'sass-rails'#,   '~> 4.0.1'
+gem 'compass-rails'
 gem 'coffee-rails', '~> 4.0.1'
 #gem 'uglifier'#, '>= 1.0.3'
 

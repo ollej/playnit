@@ -32,7 +32,7 @@
       </div>
     </div>
     <div class="row-fluid metadata">
-      <%= @playing.location %>,
+      <% if @playing.location? %><%= @playing.location %>,<% end %>
       <%= @playing.created_at.to_formatted_s(:short) %>
     </div>
     <div class="row-fluid content">

@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "compass";
+
 input, textarea, select {
     max-width: 100%;
 }
@@ -26,4 +28,12 @@ input, textarea, select {
 
 .toolbar {
   margin-top: 20px;
+}
+
+.map-unavailable {
+  background: image-url("no_map.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 150px;
+  @include background-size(contain);
 }
