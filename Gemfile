@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'radix62', github: 'ollej/radix62'
+
 gem 'pg'
 gem 'authlogic'
 gem 'devise'

@@ -17,10 +17,12 @@ class PlayingsController < ApplicationController
   # GET /playings/1
   # GET /playings/1.json
   def show
-    @playing = Playing.find(params[:id])
+    id = params[:id] || extract_id_from(params[:encoded_id])
+    @playing = Playing.find(id)
+
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render locals: { short_url: short_link_to(@playing.id) } }
       format.json { render json: @playing }
     end
   end
@@ -94,8 +96,18 @@ class PlayingsController < ApplicationController
   end
 
   private
-    def playing_params
-      params.require(:playing).permit(:content, :game, :location, :latitude, :longitude,
-                                      :photo, :photo_cache, :remote_photo_url)
-    end
+
+  def playing_params
+    params.require(:playing).permit(:content, :game, :location, :latitude, :longitude,
+                                    :photo, :photo_cache, :remote_photo_url)
+  end
+
+  def short_link_to(id)
+    #['http://', request.host, '/!', Radix62.encode(id)].join
+    ['http://', 'playn.it', '/!', Radix62.encode(id)].join
+  end
+
+  def extract_id_from(encoded_id)
+    Radix62.decode(encoded_id)
+  end
 end

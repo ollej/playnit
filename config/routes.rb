@@ -5,6 +5,7 @@ Playnit::Application.routes.draw do
 
   devise_for :users
 
+  get '/!:encoded_id', to: 'playings#show'
   resources :playings, :only => [:new, :create, :index, :show, :destroy, :edit, :update]
 
   get "home/index"
