@@ -103,8 +103,7 @@ class PlayingsController < ApplicationController
   end
 
   def short_link_to(id)
-    #['http://', request.host, '/!', Radix62.encode(id)].join
-    ['http://', 'playn.it', '/!', Radix62.encode(id)].join
+    ['http://', request.host, '/!', Radix62.encode(id)].join
   end
 
   def extract_id_from(encoded_id)
