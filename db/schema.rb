@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121211830) do
+ActiveRecord::Schema.define(version: 20140428193227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140121211830) do
     t.decimal  "latitude"
     t.decimal  "longitude"
     t.string   "photo"
+    t.integer  "bgg_id"
   end
 
   add_index "playings", ["session_token"], name: "index_playings_on_session_token", using: :btree

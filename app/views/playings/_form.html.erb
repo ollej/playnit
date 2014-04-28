@@ -17,7 +17,8 @@
   <div class="field control-group">
     <%= f.label :game, nil, class: 'control-label' %>
     <div class="controls">
-      <%= f.text_field :game, class: 'typeahead' %>
+      <%= f.text_field :game, class: 'autocomplete' %>
+      <%= f.hidden_field :bgg_id %>
     </div>
   </div>
   <div class="field control-group" id="photo-group">

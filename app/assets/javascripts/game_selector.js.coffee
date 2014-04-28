@@ -1,5 +1,5 @@
 class GameSelector
-  constructor: (@sel = '.typeahead') ->
+  constructor: (@sel = '.autocomplete') ->
     @$el = $(@sel)
     console.log "GameSelector.setup", @$el
     @$el.autocomplete
@@ -21,6 +21,12 @@ class GameSelector
   onSelect: (event, ui) =>
     console.log "GameSelector.onSelect", event, ui
     @abort()
+    console.log $('#playing_game'), ui.item['label']
+    console.log $('#playing_bgg_id'), ui.item['value']
+    $('#playing_game').val(ui.item['label'])
+    $('#playing_bgg_id').val(ui.item['value'])
+    return false
+    
 
   abort: =>
     console.log "GameSelector.abort", @xhr

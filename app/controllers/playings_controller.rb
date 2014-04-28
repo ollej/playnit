@@ -20,7 +20,6 @@ class PlayingsController < ApplicationController
     id = params[:id] || extract_id_from(params[:encoded_id])
     @playing = Playing.find(id)
 
-
     respond_to do |format|
       format.html { render locals: { short_url: short_link_to(@playing.id) } }
       format.json { render json: @playing }
@@ -99,7 +98,7 @@ class PlayingsController < ApplicationController
 
   def playing_params
     params.require(:playing).permit(:content, :game, :location, :latitude, :longitude,
-                                    :photo, :photo_cache, :remote_photo_url)
+                                    :photo, :photo_cache, :remote_photo_url, :bgg_id)
   end
 
   def short_link_to(id)

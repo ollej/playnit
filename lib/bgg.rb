@@ -5,6 +5,22 @@ module BGG
     def initialize
       @bgg = BggApi.new
 
+      def get_games(query)
+        games = @bgg.search( {:query => query, :type => 'boardgame'} )
+        names = []
+        return names if games['item'].nil?
+        games['item'].each do |game|
+          return if game.nil? or !game.has_key? 'name'
+          names << game['name'].map do |name|
+            {
+              label: name['value'],
+              value: game['id']
+            }
+          end
+        end
+        names
+      end
+
       def get_names(query)
         games = @bgg.search( {:query => query, :type => 'boardgame'} )
         names = []
