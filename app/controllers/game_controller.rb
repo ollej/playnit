@@ -20,6 +20,7 @@ class GameController < ApplicationController
     def get_names
       games = @bgg.search( {:query => params[:query], :type => 'boardgame'} )
       names = []
+      return names if games['item'].nil?
       games['item'].each do |game|
         return if game.nil? or !game.has_key? 'name'
         names << game['name'].map { |n| n['value'] }

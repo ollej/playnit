@@ -29,6 +29,7 @@ gem 'coffee-rails', '~> 4.0.1'
 #gem 'uglifier'#, '>= 1.0.3'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 #gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
 gem 'underscore-rails'
 
