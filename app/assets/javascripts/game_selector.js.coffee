@@ -26,8 +26,4 @@ class GameSelector
     console.log "GameSelector.abort", @xhr
     @xhr.abort() if @xhr?
 
-  # döda requests vid val
-  # vänta x ms efter keystroke innan ny request
-  # avbryta tidigare request vid ny, alt. inte göra ny request
-
 (exports ? this).GameSelector = GameSelector

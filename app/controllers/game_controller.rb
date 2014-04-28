@@ -1,3 +1,5 @@
+require 'bgg'
+
 class GameController < ApplicationController
   before_filter :get_api
 
@@ -18,17 +20,10 @@ class GameController < ApplicationController
     #  params.permit(:query)
     #end
     def get_names
-      games = @bgg.search( {:query => params[:query], :type => 'boardgame'} )
-      names = []
-      return names if games['item'].nil?
-      games['item'].each do |game|
-        return if game.nil? or !game.has_key? 'name'
-        names << game['name'].map { |n| n['value'] }
-      end
-      names
+      @bgg.get_names(params[:query])
     end
 
     def get_api
-      @bgg = BggApi.new
+      @bgg = BGG::API.new
     end
 end

@@ -2,14 +2,19 @@
 
 module BGG
   class API
-    attr_accessor :base_url, :type
-    @base_url = 'http://www.boardgamegeek.com/xmlapi2'
-    @type = 'boardgame'
+    def initialize
+      @bgg = BggApi.new
 
-    def search(query)
-      url = "#{@base_url}/search?type=#{type}&query=#{query}"
-      url
+      def get_names(query)
+        games = @bgg.search( {:query => query, :type => 'boardgame'} )
+        names = []
+        return names if games['item'].nil?
+        games['item'].each do |game|
+          return if game.nil? or !game.has_key? 'name'
+          names << game['name'].map { |n| n['value'] }
+        end
+        names
+      end
     end
-
   end
 end
