@@ -21,7 +21,6 @@ class GameSelector
     @callback(data)
 
   resetGame: =>
-    $('#playing_game').val('')
     $('#playing_bgg_id').val('')
 
   onSelect: (event, ui) =>

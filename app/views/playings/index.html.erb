@@ -12,10 +12,10 @@
 <div class="container-fluid">
   <% @playings.each do |playing| %>
   <div class="well well-small">
-    <div class="row-fluid">
-      <% unless playing.photo.thumb.url.blank? %>
+    <div class="row-fluid photo-row">
+      <% unless playing.photo.url.blank? %>
       <div class="photo-thumb">
-        <%= image_tag playing.photo.thumb.url, class: 'img-polaroid' %>
+        <%= image_tag playing.photo.url, class: 'img-polaroid' %>
       </div>
       <% end %>
     </div>

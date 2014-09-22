@@ -26,6 +26,11 @@ input, textarea, select {
   margin: 10px 10px 0 0;
 }
 
+.photo-row img {
+  max-width: 97%;
+  max-height: 440px;
+}
+
 .toolbar {
   margin-top: 20px;
 }
