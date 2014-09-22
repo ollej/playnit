@@ -37,7 +37,8 @@ module BGG
     def as_game_selector_data
       {
         label: label,
-        value: id
+        value: id,
+        name: name
       }
     end
   end
