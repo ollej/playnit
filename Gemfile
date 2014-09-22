@@ -39,6 +39,8 @@ gem 'underscore-rails'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
+gem 'multi_json'
+
 # Use unicorn as the app server
 gem 'unicorn-rails'
 
