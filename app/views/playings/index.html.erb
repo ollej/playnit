@@ -24,8 +24,8 @@
         <h3><%= link_to playing.game, playing %></h3>
       </div>
       <div class="pull-right span3">
-        <div class="pull-right toolbar">
-          <% if user_signed_in? and current_user == playing.user %>
+        <div class="pull-right toolbar <%= playing.toolbar_class(current_user) %>">
+          <% if user_signed_in? && current_user.can_modify?(playing) %>
           <%= link_to glyph('edit') + ' Edit', edit_playing_path(playing), class: 'btn btn-mini btn-primary' %>
           <%= link_to glyph('remove') + ' Delete', playing, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
           <% end %>

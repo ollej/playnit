@@ -39,7 +39,14 @@ class PlayingsController < ApplicationController
 
   # GET /playings/1/edit
   def edit
-    @playing = current_user.playing.find(params[:id])
+    @playing = Playing.find(params[:id])
+    respond_to do |format|
+      if current_user.can_modify?(@playing)
+        format.html # edit.html.erb
+      else
+        format.html { redirect_to root_url, status: :forbidden, alert: 'Not allowed' }
+      end
+    end
   end
 
   # POST /playings
@@ -69,15 +76,21 @@ class PlayingsController < ApplicationController
   # PUT /playings/1
   # PUT /playings/1.json
   def update
-    @playing = current_user.playing.find(params[:id])
-
-    respond_to do |format|
-      if @playing.update_attributes(playing_params)
-        format.html { redirect_to @playing, notice: 'Playing was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @playing.errors, status: :unprocessable_entity }
+    @playing = Playing.find(params[:id])
+    unless current_user.can_modify?(@playing)
+      respond_to do |format|
+        format.html { redirect_to @playing, status: :forbidden, alert: 'Not allowed' }
+        format.json { render json: { error: 'Not allowed' }, status: :forbidden }
+      end
+    else
+      respond_to do |format|
+        if @playing.update_attributes(playing_params)
+          format.html { redirect_to @playing, notice: 'Playing was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @playing.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -85,12 +98,16 @@ class PlayingsController < ApplicationController
   # DELETE /playings/1
   # DELETE /playings/1.json
   def destroy
-    @playing = current_user.playing.find(params[:id])
-    @playing.destroy
+    @playing = Playing.find(params[:id])
+    unless current_user.can_modify?(@playing)
+      render status: :forbidden
+    else
+      @playing.destroy
 
-    respond_to do |format|
-      format.html { redirect_to playings_url }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to playings_url }
+        format.json { head :no_content }
+      end
     end
   end
 

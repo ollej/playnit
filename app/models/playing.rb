@@ -25,4 +25,11 @@ class Playing < ActiveRecord::Base
   def has_location
     latitude.present? && longitude.present?
   end
+
+  def toolbar_class(current_user)
+    return "" unless current_user
+    return "playing-owner" if user == current_user
+    return "playing-admin" if current_user.can_modify?(self)
+    ""
+  end
 end

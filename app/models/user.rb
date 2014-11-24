@@ -10,4 +10,14 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :playing
+
+  def admin?
+    admin
+  end
+
+  def can_modify?(playing)
+    return true if self == playing.user
+    return true if admin?
+    false
+  end
 end
