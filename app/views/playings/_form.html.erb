@@ -42,10 +42,17 @@
       <%= f.text_area :content, size: '35x4' %>
     </div>
   </div>
+  <div class="field control-group honeypot">
+    <%= label_tag :spammenot, 'Spam Me Not', class: 'control-label' %>
+    <div class="controls">
+      <input type="text" name="spammenot">
+      <span class="help">Do not fill in this field. It is an anti-spam measure.</span>
+    </div>
+  </div>
   <div class="actions controls">
-    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-      <i class="icon-ok icon-white"></i> Create playing
-    <% end %>
+  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    <i class="icon-ok icon-white"></i> Create playing
+  <% end %>
   </div>
 <% end %>
 

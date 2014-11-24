@@ -39,6 +39,13 @@ input, textarea, select {
   }
 }
 
+.form-horizontal {
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+  }
+}
+
 .map-unavailable {
   background: image-url("no_map.png");
   background-repeat: no-repeat;

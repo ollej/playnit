@@ -2,6 +2,7 @@ class PlayingsController < ApplicationController
   include AwsHelper
 
   before_filter :authenticate_user!, :only => [:destroy, :edit, :update]
+  before_filter :spammenot!, :only => [:create, :update]
 
   # GET /playings
   # GET /playings.json
@@ -117,6 +118,10 @@ class PlayingsController < ApplicationController
   def playing_params
     params.require(:playing).permit(:content, :game, :location, :latitude, :longitude,
                                     :photo, :photo_cache, :remote_photo_url, :bgg_id)
+  end
+
+  def spammenot!
+    raise if params[:spammenot].present?
   end
 
   def short_link_to(id)
