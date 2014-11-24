@@ -6,7 +6,7 @@ class PlayingsController < ApplicationController
   # GET /playings
   # GET /playings.json
   def index
-    @playings = Playing.order(:created_at).reverse_order.all
+    @playings = Playing.order(:created_at).reverse_order.limit(10)
 
     respond_to do |format|
       format.html # index.html.erb
