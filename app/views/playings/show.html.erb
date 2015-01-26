@@ -2,7 +2,14 @@
 content_for(:title) do
   @playing.summary(true)
 end
+content_for(:card) do
 %>
+  <meta name="twitter:card" content="photo" />
+  <meta name="twitter:site" content="Playn.it" />
+  <meta name="twitter:title" content="<%= @playing.summary(true) %>" />
+  <meta name="twitter:image" content="<%= @playing.photo.url %>" />
+  <meta name="twitter:url" content="<%= link_to @playing.game, @playing %>" />
+<% end %>
 <div class="playing container-fluid">
   <div class="well well-small">
     <div class="row-fluid">
