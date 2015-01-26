@@ -32,4 +32,8 @@ class Playing < ActiveRecord::Base
     return "playing-admin" if current_user.can_modify?(self)
     ""
   end
+
+  def summary(with_content = false)
+    "Play'n #{game}. #{content if with_content}"
+  end
 end
