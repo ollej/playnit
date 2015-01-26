@@ -21,7 +21,7 @@
     </div>
     <div class="row-fluid">
       <div class="title span6">
-        <h3><%= link_to playing.game, playing %></h3>
+        <h3><%= link_to playing.game, playing.short_id %></h3>
       </div>
       <div class="pull-right span3">
         <div class="pull-right toolbar <%= playing.toolbar_class(current_user) %>">

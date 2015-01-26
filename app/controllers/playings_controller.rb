@@ -23,7 +23,7 @@ class PlayingsController < ApplicationController
     @playing = Playing.find(id)
 
     respond_to do |format|
-      format.html { render locals: { short_url: short_link_to(@playing.id) } }
+      format.html { render locals: { short_url: short_link_to(@playing) } }
       format.json { render json: @playing }
     end
   end
@@ -107,7 +107,7 @@ class PlayingsController < ApplicationController
       @playing.destroy
 
       respond_to do |format|
-        format.html { redirect_to playings_url }
+        format.html { redirect_to playings_url, notice: "#{@playing.game} checkin deleted" }
         format.json { head :no_content }
       end
     end
@@ -124,8 +124,8 @@ class PlayingsController < ApplicationController
     raise if params[:spammenot].present?
   end
 
-  def short_link_to(id)
-    ['http://', request.host, '/!', Radix62.encode(id)].join
+  def short_link_to(playing)
+    ['http://', request.host, playing.short_id].join
   end
 
   def extract_id_from(encoded_id)

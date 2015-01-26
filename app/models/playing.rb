@@ -36,4 +36,8 @@ class Playing < ActiveRecord::Base
   def summary(with_content = false)
     "Play'n #{game}. #{content if with_content}"
   end
+
+  def short_id
+    "/!#{Radix62.encode(id)}"
+  end
 end
