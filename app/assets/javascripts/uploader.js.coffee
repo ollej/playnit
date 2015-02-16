@@ -50,19 +50,29 @@ class Uploader
     #console.log 'File uploaded!', up, file, response
     src = file.getSource()
     #console.log('src', src)
+
     result = @parseResponse(response.response)
     #console.log("result", result)
     @showPhoto(result.location)
     @addPhoto(result.location)
+
+  onImageLoaded: (img) ->
+    #console.log('onImageLoaded', img)
+    # TODO: Send img.meta.gps coords to GeoLocator object (via event?)
 
   bindListeners: ->
     @uploader.bind "FilesAdded", (up, files) =>
       #console.log 'Files added:', up, files
       $.each files, (i, file) =>
         #console.log 'File added:', file
+        moxieimg = new mOxie.Image()
+        moxieimg.onload = =>
+          @onImageLoaded(moxieimg)
+        moxieimg.load(file.getSource())
       _.defer => up.start()
 
     @uploader.bind "BeforeUpload", (up, file) =>
+      console.log('beforeupload', file)
       @setFilename(file)
 
     @uploader.bind 'FileUploaded', (up, file, response) =>
