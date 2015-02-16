@@ -49,6 +49,14 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  # Auto rotate images according to meta data
+  def auto_orient
+    manipulate! do |image|
+      image.tap(&:auto_orient)
+    end
+  end
+
+  process :auto_orient # this should go before all other "process" steps
   process :set_content_type
   process :convert => 'jpeg'
 
