@@ -35,14 +35,14 @@ class GeoLocator
 
   positionToLatLng: (position) =>
     return unless @validPosition(position)
-    new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
 
   addMapUnavailable: ->
     $(".map-container").replaceWith("<div class='map-unavailable'></div>")
 
   addMap: (positions) =>
     console.log 'addMap positions', positions
-    positions = [positions] unless _.isArray(positions) 
+    positions = [positions] unless _.isArray(positions)
     console.log 'positions', positions
     if (positions.length == 1 && !@validPosition(positions[0]))
       @addMapUnavailable()
@@ -71,7 +71,7 @@ class GeoLocator
     for position in positions
       if @validPosition(position)
         latlng = @positionToLatLng(position)
-        @addMarker(latlng) 
+        @addMarker(latlng)
     this
 
   addEmptyMap: =>
@@ -94,7 +94,7 @@ class GeoLocator
       position: latlng,
       map: @map,
       title: "You are here!"
-    });
+    })
     @latlngs.push(latlng)
     this
 
