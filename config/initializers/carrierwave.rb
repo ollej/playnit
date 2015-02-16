@@ -8,6 +8,6 @@ CarrierWave.configure do |config|
     #:endpoint               => 'https://s3.example.com:8080' # optional, defaults to nil
   }
   config.fog_directory  = ENV['AWS_BUCKET'] #'playnit'                     # required
-  config.fog_public     = false                                   # optional, defaults to true
+  config.fog_public     = true                                    # optional, defaults to true
   config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
 end

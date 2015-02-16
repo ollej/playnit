@@ -19,6 +19,7 @@ class Uploader
       width: 580
       height: 440
       quality: 90
+      preserve_headers: true
 
   constructor: (options) ->
     @options = _.extend({}, @default_options, options)

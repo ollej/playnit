@@ -51,9 +51,5 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   process :set_content_type
   process :convert => 'jpeg'
-  process :resize_to_fit => [580, 440]
-  version :thumb do
-    process :resize_to_fill => [240, 240]
-  end
 
 end
