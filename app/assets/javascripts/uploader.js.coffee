@@ -80,9 +80,9 @@ class Uploader
     this
 
   setFilename: (file) ->
-    file.uniqueKey = ( "uploads/" + file.id + "/" + file.name );
-    @uploader.settings.multipart_params.key = file.uniqueKey;
-    @uploader.settings.multipart_params.Filename = file.uniqueKey; 
+    file.uniqueKey = ( "uploads/" + file.id + "/" + file.name )
+    @uploader.settings.multipart_params.key = file.uniqueKey
+    @uploader.settings.multipart_params.Filename = file.uniqueKey
     this
 
   parseResponse: (response) ->
