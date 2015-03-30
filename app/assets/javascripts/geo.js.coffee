@@ -9,19 +9,19 @@ class GeoLocator
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   constructor: (@sel, @callback, options) ->
-    @div = $(sel)
-    @callback = callback
+    @div = $(@sel)
     console.log @options
     if options
       @options = _.extend(@options, options)
     # TODO: callback should be event
 
   gotPosition: (position) =>
-    @position = position
+    positions = GeoPosition.fromGeoLocations(position)
+
     if @div.length > 0
-      @addMap position
+      @addMap positions
     if @callback?
-      @callback.call this, position
+      @callback.call this, positions
 
   gotNoPosition: (error) =>
     Flasher.warning("Failed to get position.")
@@ -30,13 +30,6 @@ class GeoLocator
   getPosition: =>
     @position
 
-  validPosition: (position) =>
-    position && position.coords && position.coords.latitude? && position.coords.longitude?
-
-  positionToLatLng: (position) =>
-    return unless @validPosition(position)
-    new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-
   addMapUnavailable: ->
     $(".map-container").replaceWith("<div class='map-unavailable'></div>")
 
@@ -44,13 +37,13 @@ class GeoLocator
     console.log 'addMap positions', positions
     positions = [positions] unless _.isArray(positions)
     console.log 'positions', positions
-    if (positions.length == 1 && !@validPosition(positions[0]))
+    if (positions.length == 1 && !positions[0].valid())
       @addMapUnavailable()
       return this
     @addEmptyMap()
     console.log('addMap @map', @map)
     if positions.length == 1
-      @map.setCenter(@positionToLatLng(positions[0]))
+      @map.setCenter(positions[0].toLatLng())
       @map.setZoom(15)
     else
       @setBounds(positions)
@@ -60,7 +53,7 @@ class GeoLocator
   setBounds: (positions) =>
     latlngbounds = new google.maps.LatLngBounds()
     for position in positions
-      latlng = @positionToLatLng(position)
+      latlng = position.toLatLng()
       console.log 'setBounds', position, latlng
       latlngbounds.extend(latlng)
     @map.setCenter latlngbounds.getCenter()
@@ -69,8 +62,8 @@ class GeoLocator
   addPositionsAsMarkers: (positions) =>
     console.log 'addPositionsAsMarkers', positions
     for position in positions
-      if @validPosition(position)
-        latlng = @positionToLatLng(position)
+      if position.valid()
+        latlng = position.toLatLng()
         @addMarker(latlng)
     this
 
