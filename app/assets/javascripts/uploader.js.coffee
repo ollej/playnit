@@ -59,6 +59,14 @@ class Uploader
   onImageLoaded: (img) ->
     #console.log('onImageLoaded', img)
     # TODO: Send img.meta.gps coords to GeoLocator object (via event?)
+    console.log(img.meta.gps)
+    pos = GeoPosition.fromGPS(img.meta.gps)
+    # Ugly hack to insert positions in html
+    $long = $('#playing_longitude')
+    $lat = $('#playing_latitude')
+    if !$long.val() && !$lat.val()
+      $long.val(pos.long())
+      $lat.val(pos.lat())
 
   bindListeners: ->
     @uploader.bind "FilesAdded", (up, files) =>

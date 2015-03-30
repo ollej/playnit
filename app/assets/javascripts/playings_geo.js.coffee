@@ -16,11 +16,13 @@ class PlayingsGeo
 
   initIndex: ->
     geo = new GeoLocator "#map-index"
-    geo.addMap(GeoPosition.fromGeoLocations(positions))
+    if positions?
+      geo.addMap(GeoPosition.fromGeoLocations(positions))
 
   initShow: ->
     geo = new GeoLocator "#map-show"
-    geo.addMap(GeoPosition.fromGeoLocations(positions))
+    if position?
+      geo.addMap(GeoPosition.fromGeoLocations(position))
 
 
 (exports ? this).PlayingsGeo = PlayingsGeo
