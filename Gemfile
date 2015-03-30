@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.3'
 gem 'rails', '4.0.0'
 
 # Bundle edge Rails instead:
@@ -14,7 +14,7 @@ gem 'devise'
 gem 'eco'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
-gem 'therubyracer'
+gem 'therubyracer', platforms: :ruby
 gem 'redis-rails'
 gem 'bgg-api'
 gem 'fog'
@@ -49,7 +49,7 @@ gem 'unicorn-rails'
 
 group(:development) do
   # To use debugger
-  gem 'debugger'
+  #gem 'debugger'
   gem 'shotgun'
 end
 
