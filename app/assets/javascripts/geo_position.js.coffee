@@ -10,8 +10,11 @@ class GeoPosition
   lat: =>
     @position.coords.latitude
 
-  getPosition: =>
-    @position
+  @fromGeoPos: (lat, lng) ->
+    new GeoPosition
+      coords:
+        latitude: lat,
+        longitude: lng
 
   @fromGeoLocations: (positions) ->
     positions = [positions] unless _.isArray(positions)
@@ -31,8 +34,8 @@ class GeoPosition
 
   @convertDMS: (dms, ref) ->
     degrees = dms[0]
-    minutes = dms[2] # Why are minutes in third element?
-    seconds = dms[1]
+    minutes = dms[1]
+    seconds = dms[2]
 
     dd = degrees + (minutes / 60.0) + (seconds / (60.0 * 60.0))
     dd = parseFloat(dd)

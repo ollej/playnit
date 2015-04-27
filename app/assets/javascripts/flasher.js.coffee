@@ -15,5 +15,6 @@ class Flasher
   error: (msg) -> @flash(msg, 'danger')
   info: (msg) -> @flash(msg, 'info')
   success: (msg) -> @flash(msg, 'success')
+  clear: -> @div().html('')
 
 (exports ? this).Flasher = Flasher

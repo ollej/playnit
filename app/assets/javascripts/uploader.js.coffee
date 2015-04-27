@@ -61,12 +61,17 @@ class Uploader
     # TODO: Send img.meta.gps coords to GeoLocator object (via event?)
     console.log(img.meta.gps)
     pos = GeoPosition.fromGPS(img.meta.gps)
-    # Ugly hack to insert positions in html
-    $long = $('#playing_longitude')
-    $lat = $('#playing_latitude')
-    if !$long.val() && !$lat.val()
-      $long.val(pos.long())
-      $lat.val(pos.lat())
+    if pos.valid()
+
+      # Ugly hack to insert positions in html
+      $long = $('#playing_longitude')
+      $lat = $('#playing_latitude')
+      if !$long.val() && !$lat.val()
+        $long.val(pos.long())
+        $lat.val(pos.lat())
+        Flasher.info('Got position from uploaded JPEG.')
+        geo = new GeoDisplay "#map-edit"
+        geo.addMap(pos)
 
   bindListeners: ->
     @uploader.bind "FilesAdded", (up, files) =>
