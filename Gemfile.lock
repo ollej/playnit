@@ -206,8 +206,6 @@ GEM
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     pg (0.18.1)
-    plupload-rails (1.2.1)
-      rails (>= 3.1)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.3)
@@ -326,7 +324,6 @@ DEPENDENCIES
   multi_json
   newrelic_rpm
   pg
-  plupload-rails
   radix62!
   rails (= 4.0.0)
   rails_12factor

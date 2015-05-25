@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require underscore
 //= require twitter/bootstrap
-//= require moxie
-//= require plupload.dev
-//= require plupload.settings
+//= require thirdparty/moxie/moxie.js
+//= require thirdparty/plupload/plupload.dev.js
+//= require thirdparty/plupload/jquery.plupload.queue.js
 //= require_tree .

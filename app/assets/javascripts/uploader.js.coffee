@@ -60,7 +60,12 @@ class Uploader
     #console.log('onImageLoaded', img)
     # TODO: Send img.meta.gps coords to GeoLocator object (via event?)
     console.log(img.meta.gps)
-    pos = GeoPosition.fromGPS(img.meta.gps)
+    gps_data = img?.meta?.gps
+    if gps_data
+      @updateGPS(gps_data)
+
+  updateGPS: (gps_data) ->
+    pos = GeoPosition.fromGPS(gps_data)
     if pos.valid()
 
       # Ugly hack to insert positions in html

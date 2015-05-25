@@ -21,7 +21,6 @@ gem 'fog'
 gem 'unf'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'plupload-rails'
 
 gem 'sass-rails'#,   '~> 4.0.1'
 gem 'compass-rails'
