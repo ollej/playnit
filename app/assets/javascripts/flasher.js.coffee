@@ -8,7 +8,7 @@ class Flasher
     @$div
 
   flash: (msg, level = "danger") ->
-    console.log('flash', msg, level)
+    logger.debug 'Flash', msg, level
     @div().append("<div class='alert fade in alert-#{level}'><button class='close' data-dismiss='alert'>×</button>#{msg}</div>")
 
   warning: (msg) -> @flash(msg, 'warning')

@@ -1,7 +1,7 @@
 class GameSelector
   constructor: (@sel = '.autocomplete') ->
     @$el = $(@sel)
-    console.log "GameSelector.setup", @$el
+    logger.debug "GameSelector.constructor", @sel, @$el
     @$el.autocomplete
       minLength: 3
       delay: 500
@@ -9,25 +9,26 @@ class GameSelector
       select: @onSelect
 
   query: (query, process) =>
-    console.log "GameSelector.query", query, process
+    logger.debug "GameSelector.query", query, process
     @callback = process
     @abort()
     @xhr = $.get '/game/index', { query: query['term'], format: 'json' }, @process
 
   process: (data, status, xhr) =>
-    console.log "GameSelector.process", data, status, xhr
+    logger.debug "GameSelector.process", data, status, xhr
     @data = data
     @resetGame()
     @callback(data)
 
   resetGame: =>
+    logger.debug "GameSelector.resetGame"
     $('#playing_bgg_id').val('')
 
   onSelect: (event, ui) =>
-    console.log "GameSelector.onSelect", event, ui
+    logger.debug 'GameSelector.onSelect', event, ui
     @abort()
-    console.log $('#playing_game'), ui.item['label']
-    console.log $('#playing_bgg_id'), ui.item['value']
+    logger.debug 'GameSelector.onSelect game:', $('#playing_game'), ui.item['label']
+    logger.debug 'GameSelector.onSelect bgg_id:', $('#playing_bgg_id'), ui.item['value']
     bgg_id = ui.item['value']
     $('#playing_bgg_id').val(bgg_id)
     bgg_game = @getLabel(bgg_id)
@@ -36,11 +37,11 @@ class GameSelector
     return false
 
   abort: =>
-    console.log "GameSelector.abort", @xhr
+    logger.debug "GameSelector.abort", @xhr
     @xhr.abort() if @xhr?
 
   getLabel: (bgg_id) =>
-    console.log "getLabel", bgg_id
+    logger.debug 'GameSelector.getLabel', bgg_id
     _.find @data, (game) -> game.value == bgg_id
 
 (exports ? this).GameSelector = GameSelector

@@ -2,7 +2,7 @@ class GeoPosition
   position: {}
 
   constructor: (@position) ->
-    #console.log("Creating GeoPosition", @position)
+    logger.debug "GeoPosition.constructor", @position
 
   long: =>
     @position.coords.longitude
@@ -17,11 +17,13 @@ class GeoPosition
         longitude: lng
 
   @fromGeoLocations: (positions) ->
+    logger.debug 'GeoPosition.fromGeoLocations', positions
     positions = [positions] unless _.isArray(positions)
     for position in positions
       position = new GeoPosition(position)
 
   @fromGPS: (gps) ->
+    logger.debug 'GeoPosition.fromGPS', gps
     lat = GeoPosition.convertDMS(gps.GPSLatitude, gps.GPSLatitudeRef)
     long = GeoPosition.convertDMS(gps.GPSLongitude, gps.GPSLongitudeRef)
     position = {
@@ -33,6 +35,7 @@ class GeoPosition
     return new GeoPosition(position)
 
   @convertDMS: (dms, ref) ->
+    logger.debug 'GeoPosition.convertDMS', dms, ref
     degrees = dms[0]
     minutes = dms[1]
     seconds = dms[2]
@@ -43,7 +46,7 @@ class GeoPosition
     if (ref == "S" || ref == "W")
       dd = dd * -1.0
 
-    console.log('dms pos:', dd)
+    logger.debug 'GeoPosition.convertDMS result:', dd
     return dd
 
   valid: =>

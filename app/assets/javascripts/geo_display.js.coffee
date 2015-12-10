@@ -10,21 +10,24 @@ class GeoDisplay
 
   constructor: (@sel, options) ->
     @div = $(@sel)
+    logger.debug 'GeoDisplay.constructor', @sel, options, @div
     if options
       @options = _.extend(@options, options)
 
   addMapUnavailable: ->
+    logger.debug 'GeoDisplay.addMapUnavailable'
     @div.html("<div class='map-unavailable'></div>")
 
   addMap: (positions) =>
-    console.log 'addMap positions', positions
+    logger.debug 'GeoDisplay.addMap positions:', positions
     positions = [positions] unless _.isArray(positions)
-    console.log 'positions', positions
+    logger.debug 'GeoDisplay.addMap positions wrapped:', positions
     if (positions.length == 1 && !positions[0].valid())
+      logger.warn 'GeoDisplay.addMap - Position is invalid'
       @addMapUnavailable()
       return this
     @addEmptyMap()
-    console.log('addMap @map', @map)
+    logger.debug 'GeoDisplay.addMap @map', @map
     if positions.length == 1
       @map.setCenter(positions[0].toLatLng())
       @map.setZoom(15)
@@ -34,16 +37,17 @@ class GeoDisplay
     this
 
   setBounds: (positions) =>
+    logger.debug 'GeoDisplay.setBounds', positions
     latlngbounds = new google.maps.LatLngBounds()
     for position in positions
       latlng = position.toLatLng()
-      console.log 'setBounds', position, latlng
+      logger.debug 'GeoDisplay.setBounds position', position, latlng
       latlngbounds.extend(latlng)
     @map.setCenter latlngbounds.getCenter()
     @map.fitBounds latlngbounds
 
   addPositionsAsMarkers: (positions) =>
-    console.log 'addPositionsAsMarkers', positions
+    logger.debug 'GeoDisplay.addPositionsAsMarkers', positions
     for position in positions
       if position.valid()
         latlng = position.toLatLng()
@@ -51,13 +55,13 @@ class GeoDisplay
     this
 
   addEmptyMap: =>
-    console.log 'addEmptyMap'
+    logger.debug 'GeoDisplay.addEmptyMap'
     $mapDiv = $('<div>', {
       id: 'mapcanvas',
       width: @width,
       height: @height
     })
-    console.log(@options)
+    logger.debug 'GeoDisplay.addEmptyMap @options', @options
     options = _.extend({}, @options)
     @map = new google.maps.Map($mapDiv[0], options)
     @div.replaceWith($mapDiv)
@@ -65,7 +69,7 @@ class GeoDisplay
 
   addMarker: (latlng) =>
     return unless @map?
-    console.log 'addMarker', latlng
+    logger.debug 'GeoDisplay.addMarker', latlng
     marker = new google.maps.Marker({
       position: latlng,
       map: @map,

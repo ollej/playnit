@@ -1,5 +1,6 @@
 class PlayingsGeo
   initGeo: ->
+    logger.debug 'PlayingsGeo.initGeo'
     if $("#map-edit").length > 0
       @initEdit('#map-edit')
     if $("#map-index").length > 0
@@ -8,6 +9,7 @@ class PlayingsGeo
       @initShow()
 
   initEdit: (sel) ->
+    logger.debug 'PlayingsGeo.initEdit', sel
     if @hasPosition()
       pos = GeoPosition.fromGeoPos(@latitude(), @longitude())
       geo_map = new GeoDisplay(sel)
@@ -24,11 +26,13 @@ class PlayingsGeo
         geo_map.addMapUnavailable()
 
   initIndex: ->
+    logger.debug 'PlayingsGeo.initIndex'
     geo = new GeoDisplay "#map-index"
     if positions?
       geo.addMap(GeoPosition.fromGeoLocations(positions))
 
   initShow: ->
+    logger.debug 'PlayingsGeo.initShow'
     geo = new GeoDisplay "#map-show"
     if position?
       geo.addMap(GeoPosition.fromGeoLocations(position))
@@ -45,6 +49,7 @@ class PlayingsGeo
     $('#playing_latitude').val()
 
   displayMap: (sel, positions) ->
+    logger.debug 'PlayingsGeo.displayMap'
     geo_map = new GeoDisplay(sel)
     geo_map.addMap(positions)
     position = positions[0]
@@ -52,6 +57,7 @@ class PlayingsGeo
     $('#playing_latitude').val(position.lat)
 
   displayNoMap: (sel) ->
+    logger.debug 'PlayingsGeo.displayNoMap'
     geo_map = new GeoDisplay(sel)
     geo_map.addMapUnavailable()
 
