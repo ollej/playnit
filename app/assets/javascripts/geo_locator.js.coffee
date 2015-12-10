@@ -2,7 +2,6 @@ class GeoLocator
   options: {}
 
   constructor: (@success, @fail, options) ->
-    console.log @options
     if options
       @options = _.extend(@options, options)
     # TODO: callback should be event

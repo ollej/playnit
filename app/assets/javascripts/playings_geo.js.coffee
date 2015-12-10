@@ -13,7 +13,7 @@ class PlayingsGeo
       geo_map = new GeoDisplay(sel)
       geo_map.addMap(pos)
     else
-      if $('new-playing').length > 0
+      if $('#new-playing').length > 0
         geo_locator = new GeoLocator(
           (pos) => @displayMap(sel, pos),
           => @displayNoMap(sel)
