@@ -35,6 +35,9 @@
     <div class="row-fluid metadata">
       <%= playing.location %>,
       <%= distance_of_time_in_words_to_now(playing.created_at) %> ago
+      <% if playing.user.present? && playing.user.name.present? %>
+        by <%= playing.user.name %>
+      <% end %>
     </div>
     <div class="row-fluid content">
       <%= playing.content %>

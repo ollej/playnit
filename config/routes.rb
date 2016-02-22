@@ -3,7 +3,10 @@ Playnit::Application.routes.draw do
 
   get "game/show"
 
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
 
   get '/!:encoded_id', to: 'playings#show'
   resources :playings, :only => [:new, :create, :index, :show, :destroy, :edit, :update]

@@ -10,16 +10,27 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+  <div><%= f.label :name %><br />
+  <%= f.text_field :name %></div>
+
+  <div><%= f.label :avatar %><br />
+  <%= f.text_field :avatar %></div>
+
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm password changes)</i><br />
   <%= f.password_field :current_password %></div>
 
   <div><%= f.submit "Update" %></div>
+<% end %>
+
+<% unless resource.google_uid.present? %>
+<h3>Connect account</h3>
+<p><%= link_to "Connect account with Google", user_omniauth_authorize_path(:google_oauth2) %></p>
 <% end %>
 
 <h3>Cancel my account</h3>
