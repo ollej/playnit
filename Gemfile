@@ -15,7 +15,7 @@ gem 'eco', '~> 1.0.0'
 gem 'newrelic_rpm', '~> 3.11.1.284'
 gem 'twitter-bootstrap-rails', '~> 2.2.8'
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
-gem 'redis-rails', '~> 4.0.0'
+gem 'redis-rails'
 gem 'bgg-api', '~> 0.0.2'
 gem 'fog', '~> 1.37.0'
 gem 'unf', '~> 0.1.4'
