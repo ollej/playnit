@@ -254,7 +254,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
-    pg (0.18.4)
+    pg (0.21.0)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -375,7 +375,7 @@ DEPENDENCIES
   multi_json (~> 1.11.0)
   newrelic_rpm (~> 3.11.1.284)
   omniauth-google-oauth2 (~> 0.3.1)
-  pg (~> 0.18.1)
+  pg
   radix62!
   rails (= 4.0.13)
   rails_12factor (~> 0.0.3)

@@ -8,7 +8,7 @@ gem 'rails', '4.0.13'
 
 gem 'radix62', github: 'ollej/radix62'
 
-gem 'pg', '~> 0.18.1'
+gem 'pg'
 gem 'authlogic', '~> 3.4.5'
 gem 'devise', '~> 3.4.1'
 gem 'eco', '~> 1.0.0'
