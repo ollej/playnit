@@ -1,8 +1,8 @@
 class PlayingsController < ApplicationController
   include AwsHelper
 
-  before_filter :authenticate_user!, :only => [:destroy, :edit, :update]
-  before_filter :spammenot!, :only => [:create, :update]
+  before_action :authenticate_user!, :only => [:destroy, :edit, :update]
+  before_action :spammenot!, :only => [:create, :update]
 
   # GET /playings
   # GET /playings.json

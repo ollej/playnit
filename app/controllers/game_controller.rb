@@ -1,7 +1,7 @@
 require 'bgg'
 
 class GameController < ApplicationController
-  before_filter :get_api
+  before_action :get_api
 
   def index
     @games = @bgg.get_games(params[:query])
