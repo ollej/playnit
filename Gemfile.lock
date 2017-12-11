@@ -283,7 +283,7 @@ DEPENDENCIES
   sqlite3
   therubyracer (~> 0.12.1)
   twitter-bootstrap-rails
-  underscore-rails (~> 1.8.2)
+  underscore-rails
   unf (~> 0.1.4)
   unicorn-rails (~> 2.2.0)
 
