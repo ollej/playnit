@@ -141,7 +141,7 @@ GEM
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    newrelic_rpm (3.11.1.284)
+    newrelic_rpm (4.6.0.338)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     oauth2 (1.4.0)
@@ -274,7 +274,7 @@ DEPENDENCIES
   jquery-rails (~> 3.1.2)
   jquery-ui-rails (~> 5.0.3)
   mini_magick (~> 4.3.6)
-  newrelic_rpm (~> 3.11.1.284)
+  newrelic_rpm
   omniauth-google-oauth2
   pg
   radix62!
