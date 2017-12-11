@@ -19,7 +19,7 @@ gem 'bgg-api', '~> 0.0.2'
 gem 'unf', '~> 0.1.4'
 gem 'carrierwave'
 gem 'fog-aws'
-gem 'mini_magick', '~> 4.3.6'
+gem 'mini_magick'
 gem 'omniauth-google-oauth2'
 
 gem 'sass-rails'
