@@ -14,3 +14,7 @@
 /log/*.log
 /tmp
 bin/start.sh
+
+vendor/bundle
+public/uploads
+.s3cfg

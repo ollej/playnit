@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
 ruby '2.3.5'
-gem 'rails', '4.0.13'
+gem 'rails', '4.1.16'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'radix62', github: 'ollej/radix62'
+gem 'radix62', git: 'https://github.com/ollej/radix62'
 
 gem 'pg'
 gem 'authlogic', '~> 3.4.5'
@@ -39,8 +39,6 @@ gem 'underscore-rails', '~> 1.8.2'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-gem 'multi_json', '~> 1.11.0'
-
 # Use unicorn as the app server
 gem 'unicorn-rails', '~> 2.2.0'
 
@@ -51,6 +49,7 @@ group(:development) do
   # To use debugger
   #gem 'debugger'
   gem 'shotgun'
+  gem 'spring'
 end
 
 group(:test) do
