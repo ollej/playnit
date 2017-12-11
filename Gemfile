@@ -21,7 +21,7 @@ gem 'unf', '~> 0.1.4'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick', '~> 4.3.6'
-gem 'omniauth-google-oauth2', '~> 0.3.1'
+gem 'omniauth-google-oauth2'
 
 gem 'sass-rails', '~> 5.0.4'#,   '~> 4.0.1'
 gem 'compass-rails', '~> 2.0.4'
