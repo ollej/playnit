@@ -20,10 +20,10 @@
       <% end %>
     </div>
     <div class="row">
-      <div class="title col-md-8">
+      <div class="title col-md-7">
         <h3><%= link_to playing.game, playing.short_id %></h3>
       </div>
-      <div class="pull-right col-md-4">
+      <div class="pull-right col-md-5">
         <div class="pull-right toolbar <%= playing.toolbar_class(current_user) %>">
           <% if user_signed_in? && current_user.can_modify?(playing) %>
           <%= link_to glyph('edit') + ' Edit', edit_playing_path(playing), class: 'btn btn-xs btn-primary' %>

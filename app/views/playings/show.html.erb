@@ -11,8 +11,8 @@ content_for(:card) do
   <meta name="twitter:url" content="<%= short_url %>" />
 <% end %>
 <div class="playing container-fluid">
-  <div class="well well-small">
-    <div class="row">
+  <div class="well well-sm">
+    <div class="row col-md-12">
       <% unless @playing.photo.url.blank? %>
       <div class="photo">
         <%= image_tag @playing.photo.url, class: 'img-thumbnail' %>
@@ -20,7 +20,7 @@ content_for(:card) do
       <% end %>
     </div>
     <div class="row">
-      <div class="title col-md-6">
+      <div class="title col-md-7">
         <h3>
         <% if @playing.has_location %>
           <%= link_to @playing.game, @playing %>
@@ -29,7 +29,7 @@ content_for(:card) do
         <% end %>
         </h3>
       </div>
-      <div class="pull-right col-md-4">
+      <div class="pull-right col-md-5">
         <div class="pull-right toolbar">
           <% if @playing.bgg_id %>
           <a href="http://boardgamegeek.com/boardgame/<%= @playing.bgg_id %>">[BGG]</a>
@@ -42,17 +42,21 @@ content_for(:card) do
       </div>
     </div>
     <div class="row metadata">
-      <% if @playing.location? %><%= @playing.location %>,<% end %>
-      <%= @playing.created_at.to_formatted_s(:short) %>
-      <% if @playing.user.present? && @playing.user.name.present? %>
-        by <%= @playing.user.name %>
-      <% end %>
+      <div class="col-md-12">
+        <% if @playing.location? %><%= @playing.location %>,<% end %>
+        <%= @playing.created_at.to_formatted_s(:short) %>
+        <% if @playing.user.present? && @playing.user.name.present? %>
+          by <%= @playing.user.name %>
+        <% end %>
+      </div>
     </div>
     <div class="row content">
-      <%= @playing.content %>
+      <div class="col-md-12">
+        <%= @playing.content %>
+      </div>
     </div>
     <div class="row">
-      <div class="pull-right">
+      <div class="col-md-12 pull-right">
         <a href="https://twitter.com/share" class="twitter-share-button"
           data-url="<%= short_url %>"
           data-size="large" data-count="none"
@@ -61,8 +65,10 @@ content_for(:card) do
       </div>
     </div>
     <div class="row">
-      <div class="map-container">
-        <div id="map-show">No position available.</div>
+      <div class="col-md-12">
+        <div class="map-container">
+          <div id="map-show">No position available.</div>
+        </div>
       </div>
     </div>
   </div>
