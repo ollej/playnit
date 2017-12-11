@@ -105,8 +105,7 @@ GEM
     formatador (0.2.5)
     grease (0.3.1)
     hashie (3.5.6)
-    httparty (0.13.7)
-      json (~> 1.8)
+    httparty (0.15.6)
       multi_xml (>= 0.5.2)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
@@ -261,7 +260,7 @@ PLATFORMS
   x86_64-darwin-16
 
 DEPENDENCIES
-  bgg-api (~> 0.0.2)
+  bgg-api
   byebug
   carrierwave
   coffee-rails
