@@ -68,7 +68,7 @@
 <% unless resource.google_uid.present? %>
 <h3>Connect account</h3>
 <p>
-  <%= link_to 'Connect account with Google', user_omniauth_authorize_path(:google_oauth2) %>
+  <%= link_to 'Connect account with Google', user_google_oauth2_omniauth_authorize_path %>
 </p>
 <% end %>
 
