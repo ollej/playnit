@@ -51,7 +51,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.10.0)
+    coffee-script-source (1.12.2)
     commonjs (0.2.7)
     compass (1.0.3)
       chunky_png (~> 1.2)
@@ -269,7 +269,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.1)
   compass-rails (~> 2.0.4)
   devise
-  eco (~> 1.0.0)
+  eco
   fog-aws
   jquery-rails (~> 3.1.2)
   jquery-ui-rails (~> 5.0.3)

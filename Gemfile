@@ -10,7 +10,7 @@ gem 'radix62', git: 'https://github.com/ollej/radix62'
 
 gem 'pg'
 gem 'devise'
-gem 'eco', '~> 1.0.0'
+gem 'eco'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
