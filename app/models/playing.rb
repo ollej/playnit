@@ -1,8 +1,8 @@
 require 'carrierwave/orm/activerecord'
 
-class Playing < ActiveRecord::Base
+class Playing < ApplicationRecord
   mount_uploader :photo, PhotoUploader
-  belongs_to :user
+  belongs_to :user, optional: true
 
   validates :game, :presence => true
   #validates :latitude, :presence => true
