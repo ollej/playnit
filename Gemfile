@@ -27,8 +27,8 @@ gem 'compass-rails'
 gem 'coffee-rails'
 #gem 'uglifier'#, '>= 1.0.3'
 
-gem 'jquery-rails', '~> 3.1.2'
-gem 'jquery-ui-rails', '~> 5.0.3'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 #gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
 gem 'underscore-rails', '~> 1.8.2'
 
