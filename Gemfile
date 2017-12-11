@@ -22,9 +22,9 @@ gem 'fog-aws'
 gem 'mini_magick', '~> 4.3.6'
 gem 'omniauth-google-oauth2'
 
-gem 'sass-rails', '~> 5.0.4'#,   '~> 4.0.1'
-gem 'compass-rails', '~> 2.0.4'
-gem 'coffee-rails', '~> 4.0.1'
+gem 'sass-rails'
+gem 'compass-rails'
+gem 'coffee-rails'
 #gem 'uglifier'#, '>= 1.0.3'
 
 gem 'jquery-rails', '~> 3.1.2'
