@@ -31,8 +31,10 @@ content_for(:card) do
       </div>
       <div class="pull-right col-md-5">
         <div class="pull-right toolbar">
-          <% if @playing.bgg_id %>
-          <a href="http://boardgamegeek.com/boardgame/<%= @playing.bgg_id %>">[BGG]</a>
+          <% if @playing.bgg_id.present? %>
+            <%= link_to glyph('tower') + ' BGG',
+              "http://boardgamegeek.com/boardgame/#{@playing.bgg_id}",
+              class: 'btn btn-xs btn-default' %>
           <% end %>
           <% if user_signed_in? and current_user == @playing.user %>
           <%= link_to glyph('edit') + ' Edit', edit_playing_path(@playing), class: 'btn btn-xs btn-primary' %>
