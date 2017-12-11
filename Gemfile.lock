@@ -34,12 +34,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    authlogic (3.4.6)
-      activerecord (>= 3.2)
-      activesupport (>= 3.2)
-      request_store (~> 1.0)
-      scrypt (>= 1.2, < 3.0)
-    bcrypt (3.1.10)
+    bcrypt (3.1.11)
     bgg-api (0.0.2)
       httparty
       xml-simple
@@ -75,12 +70,11 @@ GEM
       sass-rails (< 5.1)
       sprockets (< 2.13)
     concurrent-ruby (1.0.5)
-    devise (3.4.1)
+    devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
+      railties (>= 4.1.0, < 5.2)
       responders
-      thread_safe (~> 0.1)
       warden (~> 1.2.3)
     eco (1.0.0)
       coffee-script
@@ -93,9 +87,6 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
-    ffi-compiler (0.1.3)
-      ffi (>= 1.0.0)
-      rake
     fog-aws (2.0.0)
       fog-core (~> 1.38)
       fog-json (~> 1.0)
@@ -218,7 +209,6 @@ GEM
     redis-store (1.4.1)
       redis (>= 2.2, < 5)
     ref (2.0.0)
-    request_store (1.2.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.4.20)
@@ -228,9 +218,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    scrypt (2.0.2)
-      ffi-compiler (>= 0.0.2)
-      rake
     shotgun (0.9.1)
       rack (>= 1.0)
     sprockets (2.12.4)
@@ -267,7 +254,7 @@ GEM
     unicorn-rails (2.2.0)
       rack
       unicorn
-    warden (1.2.4)
+    warden (1.2.7)
       rack (>= 1.0)
     xml-simple (1.1.5)
 
@@ -276,13 +263,12 @@ PLATFORMS
   x86_64-darwin-16
 
 DEPENDENCIES
-  authlogic (~> 3.4.5)
   bgg-api (~> 0.0.2)
   byebug
   carrierwave
   coffee-rails (~> 4.0.1)
   compass-rails (~> 2.0.4)
-  devise (~> 3.4.1)
+  devise
   eco (~> 1.0.0)
   fog-aws
   jquery-rails (~> 3.1.2)
