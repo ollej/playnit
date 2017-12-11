@@ -13,7 +13,7 @@ gem 'devise'
 gem 'eco'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
-gem 'therubyracer', '~> 0.12.1', platforms: :ruby
+gem 'therubyracer'
 gem 'redis-rails'
 gem 'bgg-api', '~> 0.0.2'
 gem 'unf'
