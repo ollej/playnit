@@ -43,34 +43,20 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="<%= root_path %>">Playn.it</a>
-          <%= link_to glyph('plus') + " Play'n it!", new_playing_path, class: 'btn btn-primary' %>
-          <div class="container-fluid nav-collapse pull-left">
-
-            <div id="menu">
-              <ul class="nav">
-                <% if user_signed_in? %>
-                  <!-- <li><%= link_to glyph('user') + ' ' + current_user.email, class: 'navbar-link' %></li> -->
-                  <li><%= link_to glyph('user') + ' Edit profile', edit_user_registration_path, class: 'navbar-link' %></li>
-                  <li><%= link_to glyph('off') + " Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %></li>
-                <% else %>
-                  <li><%= link_to glyph('user') + " Sign up", new_user_registration_path, class: 'navbar-link'  %></li>
-                  <li><%= link_to glyph('off') + " Login", new_user_session_path, class: 'navbar-link'  %></li>
-                <% end %>
-              </ul>
-            </div><!-- /.menu -->
-          </div><!-- /.nav-collapse -->
-        </div><!-- .container-fluid -->
-      </div><!-- /.navbar-inner -->
-    </div><!-- /.navbar -->
+    <%= nav_bar brand: 'Playn.it', brand_link: root_path, responsive: true do %>
+      <%= menu_group do %>
+        <% if user_signed_in? %>
+          <%= menu_item glyph('user') + ' Edit profile', edit_user_registration_path %>
+          <%= menu_item glyph('off') + ' Logout', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= menu_item glyph('user') + ' Sign up', new_user_registration_path %>
+          <%= menu_item glyph('off') + ' Login', new_user_session_path %>
+        <% end %>
+      <% end %>
+      <%= menu_group pull: :right do %>
+        <%= menu_item glyph('plus') + " Play'n it!", new_playing_path, class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
 
     <div class="main-content container-fluid">
       <div id="flash-container">

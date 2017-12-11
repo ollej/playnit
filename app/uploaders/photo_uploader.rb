@@ -1,8 +1,6 @@
 # encoding: utf-8
 
 class PhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MimeTypes
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -57,7 +55,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   process :auto_orient # this should go before all other "process" steps
-  process :set_content_type
   process :convert => 'jpeg'
 
 end

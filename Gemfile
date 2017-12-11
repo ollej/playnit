@@ -13,13 +13,13 @@ gem 'authlogic', '~> 3.4.5'
 gem 'devise', '~> 3.4.1'
 gem 'eco', '~> 1.0.0'
 gem 'newrelic_rpm', '~> 3.11.1.284'
-gem 'twitter-bootstrap-rails', '~> 2.2.8'
+gem 'twitter-bootstrap-rails'
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
 gem 'redis-rails'
 gem 'bgg-api', '~> 0.0.2'
-gem 'fog', '~> 1.37.0'
 gem 'unf', '~> 0.1.4'
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave'
+gem 'fog-aws'
 gem 'mini_magick', '~> 4.3.6'
 gem 'omniauth-google-oauth2', '~> 0.3.1'
 
@@ -47,9 +47,9 @@ gem 'unicorn-rails', '~> 2.2.0'
 
 group(:development) do
   # To use debugger
-  #gem 'debugger'
+  gem 'byebug'
   gem 'shotgun'
-  gem 'spring'
+  #gem 'spring'
 end
 
 group(:test) do

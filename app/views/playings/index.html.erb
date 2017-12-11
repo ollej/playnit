@@ -1,7 +1,7 @@
 <h2>What's play'n?</h2>
 <div class="container-fluid">
-  <div class="row-fluid">
-    <div class="well well-small">
+  <div class="row">
+    <div class="well well-sm">
       <div class="map-container">
         <div id="map-index"><%= image_tag "loading.gif" %></div>
       </div>
@@ -11,36 +11,40 @@
 
 <div class="container-fluid">
   <% @playings.each do |playing| %>
-  <div class="well well-small">
-    <div class="row-fluid photo-row">
+  <div class="well well-sm">
+    <div class="row photo-row col-md-12">
       <% unless playing.photo.url.blank? %>
       <div class="photo-thumb">
-        <%= image_tag playing.photo.url, class: 'img-polaroid' %>
+        <%= image_tag playing.photo.url, class: 'img-thumbnail' %>
       </div>
       <% end %>
     </div>
-    <div class="row-fluid">
-      <div class="title span6">
+    <div class="row">
+      <div class="title col-md-8">
         <h3><%= link_to playing.game, playing.short_id %></h3>
       </div>
-      <div class="pull-right span3">
+      <div class="pull-right col-md-4">
         <div class="pull-right toolbar <%= playing.toolbar_class(current_user) %>">
           <% if user_signed_in? && current_user.can_modify?(playing) %>
-          <%= link_to glyph('edit') + ' Edit', edit_playing_path(playing), class: 'btn btn-mini btn-primary' %>
-          <%= link_to glyph('remove') + ' Delete', playing, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+          <%= link_to glyph('edit') + ' Edit', edit_playing_path(playing), class: 'btn btn-xs btn-primary' %>
+          <%= link_to glyph('remove') + ' Delete', playing, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="row-fluid metadata">
-      <%= playing.location %>,
-      <%= distance_of_time_in_words_to_now(playing.created_at) %> ago
-      <% if playing.user.present? && playing.user.name.present? %>
-        by <%= playing.user.name %>
-      <% end %>
+    <div class="row metadata">
+      <div class="col-md-12">
+        <%= playing.location %>,
+        <%= distance_of_time_in_words_to_now(playing.created_at) %> ago
+        <% if playing.user.present? && playing.user.name.present? %>
+          by <%= playing.user.name %>
+        <% end %>
+      </div>
     </div>
-    <div class="row-fluid content">
-      <%= playing.content %>
+    <div class="row content">
+      <div class="col-md-12">
+        <%= playing.content %>
+      </div>
     </div>
   </div>
   <% end %>
