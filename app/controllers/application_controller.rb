@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :require_token
+  before_action :require_token
 
   def generate_token
     SecureRandom.uuid
