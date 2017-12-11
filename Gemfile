@@ -16,7 +16,7 @@ gem 'twitter-bootstrap-rails'
 gem 'therubyracer', '~> 0.12.1', platforms: :ruby
 gem 'redis-rails'
 gem 'bgg-api', '~> 0.0.2'
-gem 'unf', '~> 0.1.4'
+gem 'unf'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'

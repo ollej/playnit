@@ -243,7 +243,7 @@ GEM
     underscore-rails (1.8.3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.1)
+    unf_ext (0.0.7.4)
     unicorn (5.0.1)
       kgio (~> 2.6)
       rack
@@ -284,7 +284,7 @@ DEPENDENCIES
   therubyracer (~> 0.12.1)
   twitter-bootstrap-rails
   underscore-rails
-  unf (~> 0.1.4)
+  unf
   unicorn-rails (~> 2.2.0)
 
 RUBY VERSION
