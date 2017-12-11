@@ -1,6 +1,5 @@
 # http://www.boardgamegeek.com/xmlapi2/search?type=boardgame&query=
 require 'redis'
-require 'multi_json'
 
 module BGG
   class Game
@@ -63,11 +62,11 @@ module BGG
       if result.nil?
         #puts "cache miss: #{key}"
         result = @bgg.search( query_hash )
-        @redis.set(key, MultiJson.dump(result))
+        @redis.set(key, JSON.dump(result))
         @redis.expire key, CACHE_EXPIRE
       else
         #puts "cache hit: #{key}"
-        result = MultiJson.load(result)
+        result = JSON.load(result)
         #puts "result: #{result.inspect}"
       end
       result

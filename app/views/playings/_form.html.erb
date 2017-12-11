@@ -1,60 +1,80 @@
-<%= form_for(@playing, :html => { :class => 'form-horizontal' }) do |f| %>
-  <%= f.hidden_field :latitude %>
-  <%= f.hidden_field :longitude %>
-  <%= f.hidden_field :photo_cache %>
-  <% if @playing.errors.any? %>
-    <div class="alert alert-error">
-      <h3>Please review the following</h3>
+<div class="container">
+  <%= form_for(@playing, :html => { :class => 'form-horizontal' }) do |f| %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :photo_cache %>
+    <% if @playing.errors.any? %>
+      <div class="row">
+        <div class="alert alert-danger col-lg-5">
+          <h3>Please review the following</h3>
 
-      <ul>
-      <% @playing.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+          <% @playing.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
 
-  <div class="field control-group">
-    <%= f.label :game, nil, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :game, class: 'autocomplete' %>
-      <%= f.hidden_field :bgg_id %>
-    </div>
-  </div>
-  <div class="field control-group" id="photo-group">
-    <%= f.label :photo, 'Photo', class: 'control-label' %>
-    <div class="controls">
-      <div class="uploader" id="uploader">
-        <%= link_to 'Add photo', '#', id: 'add_photo' %>
-        <div id="photo" class="photo"></div>
+    <div class="row">
+      <div class="field input-group col-lg-5">
+        <%= f.label :game, nil, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :game, class: 'form-control autocomplete' %>
+          <%= f.hidden_field :bgg_id %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="field control-group">
-    <%= f.label :location, 'Where', class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :location %>
+
+    <div class="row">
+      <div class="field input-group col-lg-5" id="photo-group">
+        <%= f.label :photo, 'Photo', class: 'control-label' %>
+        <div class="controls">
+          <div class="uploader" id="uploader">
+            <%= link_to 'Add photo', '#', id: 'add_photo' %>
+            <div id="photo" class="photo"></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="field control-group">
-    <%= f.label :content, 'Note', class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :content, size: '35x4' %>
+
+    <div class="row">
+      <div class="field input-group col-lg-5">
+        <%= f.label :location, 'Where', class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :location, class: 'form-control' %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="field control-group honeypot">
-    <%= label_tag :spammenot, 'Spam Me Not', class: 'control-label' %>
-    <div class="controls">
-      <input type="text" name="spammenot">
-      <span class="help">Do not fill in this field. It is an anti-spam measure.</span>
+
+    <div class="row">
+      <div class="field input-group col-lg-5">
+        <%= f.label :content, 'Note', class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :content, size: '35x4', class: 'form-control' %>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="actions controls">
-  <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-    <i class="icon-ok icon-white"></i> Create playing
+
+    <div class="field input-group honeypot">
+      <%= label_tag :spammenot, 'Spam Me Not', class: 'control-label' %>
+      <div class="controls">
+        <input type="text" name="spammenot">
+        <span class="help">Do not fill in this field. It is an anti-spam measure.</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="actions controls col-lg-5">
+        <br>
+        <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+          <i class="glyphicon glyphicon-ok glyphicon-white"></i> Create playing
+        <% end %>
+      </div>
+    </div>
   <% end %>
-  </div>
-<% end %>
+</div>
 
 <%= javascript_tag do -%>
   window.uploader_options = {

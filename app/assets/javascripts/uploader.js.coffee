@@ -40,7 +40,7 @@ class Uploader
     logger.debug 'Uploader.showPhoto', location
     img = $('<img></img>')
       .prop('src', location)
-      .prop('class', 'img-polaroid')
+      .prop('class', 'img-thumbnail')
     $("#photo").html(img)
     this
 
