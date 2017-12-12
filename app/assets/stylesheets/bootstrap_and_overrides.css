@@ -17,6 +17,9 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.navbar-default .navbar-nav li.active a.btn-primary {
+  color: #333;
+}
 .form-horizontal .control-label {
   width: 80px;
 }
