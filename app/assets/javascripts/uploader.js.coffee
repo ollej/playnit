@@ -28,7 +28,7 @@ class Uploader
       logger.warn 'File API not available'
       Flasher.warning('Photo uploads unavailable on this device.')
       $("#photo-group").hide()
-      this
+      return this
     @uploader = new plupload.Uploader(@options)
     @bindListeners()
     this
