@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.4.2'
+ruby '2.5.0'
 gem 'rails', '5.1.4'
 
 # Bundle edge Rails instead:
@@ -9,7 +9,7 @@ gem 'rails', '5.1.4'
 gem 'radix62', git: 'https://github.com/ollej/radix62'
 
 gem 'pg'
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise', ref: '135d898' # Use bleeding edge to support Ruby v2.5.0
 gem 'eco'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
