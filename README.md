@@ -8,9 +8,9 @@ Contact us at: i.am@playn.it
 Requires
 --------
 
- * Ruby 2.0.0
- * Rails 4.0
- * Postgres
+ * Ruby 2.5.3
+ * Rails 5.1
+ * Postgres 9.6
  * Redis
 
 Installation
@@ -42,3 +42,11 @@ Installation
 ```
 
 
+Setup
+-----
+
+Start postgres
+
+```bash
+/usr/local/opt/postgresql@9.6/bin/pg_ctl -D /usr/local/var/postgresql start
+```
