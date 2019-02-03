@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-
   before_action :require_token
 
   def generate_token
