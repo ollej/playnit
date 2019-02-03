@@ -18,3 +18,5 @@ bin/start.sh
 vendor/bundle
 public/uploads
 .s3cfg
+
+node_modules

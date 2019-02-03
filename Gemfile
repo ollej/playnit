@@ -1,7 +1,9 @@
 source 'http://rubygems.org'
 
 ruby '2.6.1'
-gem 'rails', '5.1.6'
+gem 'rails', '5.2.2'
+
+gem 'bootsnap', require: false
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,7 +11,7 @@ gem 'rails', '5.1.6'
 gem 'radix62', git: 'https://github.com/ollej/radix62'
 
 gem 'pg'
-gem 'devise', git: 'https://github.com/plataformatec/devise', ref: '135d898' # Use bleeding edge to support Ruby v2.5.0
+gem 'devise'
 gem 'eco'
 gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
@@ -22,7 +24,7 @@ gem 'fog-aws'
 gem 'mini_magick'
 gem 'omniauth-google-oauth2'
 
-gem 'sass-rails'
+gem 'sassc-rails'
 gem 'coffee-rails'
 #gem 'uglifier'#, '>= 1.0.3'
 
