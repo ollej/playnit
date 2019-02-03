@@ -23,7 +23,6 @@ gem 'mini_magick'
 gem 'omniauth-google-oauth2'
 
 gem 'sass-rails'
-gem 'compass-rails'
 gem 'coffee-rails'
 #gem 'uglifier'#, '>= 1.0.3'
 
