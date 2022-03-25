@@ -51,7 +51,7 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
-    bcrypt (3.1.12)
+    bcrypt (3.1.17)
     bgg-api (0.0.2)
       httparty
       xml-simple
@@ -77,10 +77,10 @@ GEM
     commonjs (0.2.7)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
-    devise (4.5.0)
+    devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 6.0)
+      railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
     eco (1.0.0)
@@ -243,9 +243,9 @@ GEM
     redis-store (1.6.0)
       redis (>= 2.2, < 5)
     ref (2.0.0)
-    responders (2.4.1)
-      actionpack (>= 4.2.0, < 6.0)
-      railties (>= 4.2.0, < 6.0)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -292,8 +292,8 @@ GEM
     unicorn-rails (2.2.1)
       rack
       unicorn
-    warden (1.2.8)
-      rack (>= 2.0.6)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
