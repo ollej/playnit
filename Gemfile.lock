@@ -53,8 +53,8 @@ GEM
     bgg-api (0.0.2)
       httparty
       xml-simple
-    bootsnap (1.3.2)
-      msgpack (~> 1.0)
+    bootsnap (1.11.1)
+      msgpack (~> 1.2)
     builder (3.2.3)
     byebug (10.0.2)
     carrierwave (1.3.1)
@@ -151,7 +151,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    msgpack (1.2.6)
+    msgpack (1.4.5)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -317,7 +317,7 @@ DEPENDENCIES
   unicorn-rails (~> 2.2.0)
 
 RUBY VERSION
-   ruby 2.6.1p33
+   ruby 2.7.1p83
 
 BUNDLED WITH
    1.17.2
