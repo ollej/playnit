@@ -66,6 +66,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     base64 (0.2.0)
     bcrypt (3.1.20)
+    benchmark (0.4.0)
     bgg-api (0.0.2)
       httparty
       xml-simple
@@ -361,6 +362,7 @@ PLATFORMS
   x86_64-darwin-16
 
 DEPENDENCIES
+  benchmark
   bgg-api
   bigdecimal
   bootsnap

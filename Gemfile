@@ -50,6 +50,7 @@ gem 'unicorn-rails'
 gem 'sprockets-rails'
 gem 'mutex_m'
 gem 'bigdecimal'
+gem 'benchmark'
 
 group(:development) do
   # To use debugger
