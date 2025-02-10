@@ -53,6 +53,7 @@ gem 'bigdecimal'
 gem 'benchmark'
 gem 'webpacker'
 gem 'ostruct'
+gem 'concurrent-ruby', '1.3.4'
 
 group(:development) do
   # To use debugger
