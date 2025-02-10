@@ -224,6 +224,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
+    ostruct (0.6.1)
     pg (1.5.9)
     public_suffix (5.1.1)
     racc (1.8.1)
@@ -369,6 +370,7 @@ DEPENDENCIES
   mutex_m
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  ostruct
   pg
   radix62!
   rails (= 6.0.6.1)

@@ -51,7 +51,8 @@ gem 'sprockets-rails'
 gem 'mutex_m'
 gem 'bigdecimal'
 gem 'benchmark'
-gem "webpacker"
+gem 'webpacker'
+gem 'ostruct'
 
 group(:development) do
   # To use debugger
