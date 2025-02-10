@@ -1,0 +1,27 @@
+{
+  "name": "Playn.it!",
+  "description": "A social gaming checkin community.",
+  "keywords": [
+    "boardgames",
+    "games",
+    "social",
+    "community"
+  ],
+  "scripts": {
+    "dokku": {
+      "predeploy": "bundle exec rake assets:precompile",
+      "postdeploy": "bundle exec rake db:migrate"
+    }
+  },
+  "healthchecks": {
+    "web": [
+      {
+        "type":        "startup",
+        "name":        "web check",
+        "description": "Checking if the app responds to the /health/ready endpoint",
+        "path":        "/health",
+        "attempts": 3
+      }
+    ]
+  }
+}
