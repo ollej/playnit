@@ -55,7 +55,7 @@ class PlayingsController < ApplicationController
   # POST /playings.json
   def create
     @playing = Playing.new(playing_params)
-    photo = URI.unescape(playing_params[:remote_photo_url] || "")
+    photo = URI::Parser.new.unescape(playing_params[:remote_photo_url] || "")
     logger.debug("Uploaded photo URL: #{photo}")
     #@playing.raw_write_attribute(:photo, URI.unescape(playing_params[:photo]))
     @playing.session_token = session[:session_token]
