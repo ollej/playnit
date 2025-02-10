@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.7.8'
-gem 'rails', '5.2.8.1'
+ruby '3.4.1'
+gem 'rails', '6.0.6.1'
 
 gem 'bootsnap', require: false
 
@@ -46,7 +46,10 @@ gem 'unicorn-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
+# Fixes for ruby upgrade
 gem 'sprockets-rails'
+gem 'mutex_m'
+gem 'bigdecimal'
 
 group(:development) do
   # To use debugger
