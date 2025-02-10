@@ -1,7 +1,7 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-ruby '2.7.5'
-gem 'rails', '5.2.7'
+ruby '2.7.8'
+gem 'rails', '5.2.8.1'
 
 gem 'bootsnap', require: false
 
@@ -16,7 +16,7 @@ gem 'eco'
 gem 'redis-rails'
 #gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
-gem 'therubyracer'
+#gem 'therubyracer'
 gem 'bgg-api'
 gem 'unf'
 gem 'carrierwave'
@@ -25,7 +25,7 @@ gem 'mini_magick'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
-gem 'sassc-rails'
+gem 'sass-rails'
 gem 'coffee-rails'
 #gem 'uglifier'#, '>= 1.0.3'
 
@@ -41,10 +41,12 @@ gem 'underscore-rails'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-gem 'unicorn-rails', '~> 2.2.0'
+gem 'unicorn-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
+
+gem 'sprockets-rails'
 
 group(:development) do
   # To use debugger
