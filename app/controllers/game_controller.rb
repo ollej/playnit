@@ -1,5 +1,3 @@
-require 'bgg'
-
 class GameController < ApplicationController
   before_action :get_api
 
