@@ -37,7 +37,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_white_list
+  def extension_allowlist
     %w(jpg jpeg gif png)
   end
 
@@ -55,6 +55,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   process :auto_orient # this should go before all other "process" steps
-  process :convert => 'jpeg'
-
+  process convert: 'jpeg'
+  force_extension false
 end
