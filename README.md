@@ -9,7 +9,7 @@ Requires
 --------
 
  * Ruby 3.4.1
- * Rails 7.0.8.7
+ * Rails 7.1.5.1
  * Postgres 17
  * Redis
 
