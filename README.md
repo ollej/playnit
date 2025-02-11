@@ -9,8 +9,8 @@ Requires
 --------
 
  * Ruby 3.4.1
- * Rails 6.1.7.10
- * Postgres 9.6
+ * Rails 7.0.8.7
+ * Postgres 17
  * Redis
 
 Installation
