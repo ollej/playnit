@@ -10,6 +10,10 @@ module Playnit
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.add_autoload_paths_to_load_path = false
+    if Rails.env.local?
+      Rails.application.config.log_file_size = 100 * 1024 * 1024
+    end
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
