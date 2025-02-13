@@ -1,12 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS101: Remove unnecessary use of Array.from
- * DS102: Remove unnecessary code created because of implicit returns
- * DS206: Consider reworking classes to avoid initClass
- * DS207: Consider shorter variations of null checks
- * DS208: Avoid top-level this
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 class GeoPosition {
   constructor(position = {}) {
     logger.debug("GeoPosition.constructor", this.position);
@@ -30,10 +21,10 @@ class GeoPosition {
     });
   }
 
-  static fromGeoLocations(positions) {
-    logger.debug('GeoPosition.fromGeoLocations', positions);
-    return Array.from(positions).map((position) =>
-      position = new GeoPosition(position));
+  static fromGeoLocations(geo_locations) {
+    logger.debug('GeoPosition.fromGeoLocations', geo_locations);
+    if (!Array.isArray(geo_locations)) { geo_locations = [geo_locations]; }
+    return geo_locations.map((geo_location) => new GeoPosition(geo_location));
   }
 
   static fromGPS(gps) {

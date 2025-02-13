@@ -53,8 +53,8 @@ class PlayingsGeo
     geo_map = new GeoDisplay(sel)
     geo_map.addMap(positions)
     position = positions[0]
-    $('#playing_longitude').val(position.long)
-    $('#playing_latitude').val(position.lat)
+    $('#playing_longitude').val(position.long())
+    $('#playing_latitude').val(position.lat())
 
   displayNoMap: (sel) ->
     logger.debug 'PlayingsGeo.displayNoMap'
