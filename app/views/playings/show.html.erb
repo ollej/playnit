@@ -85,4 +85,3 @@ content_for(:card) do
 <%= javascript_tag do -%>
   window.position = $.parseJSON('<%=j @playing.position.to_json.html_safe %>');
 <% end -%>
-

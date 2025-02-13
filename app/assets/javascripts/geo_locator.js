@@ -3,7 +3,7 @@ class GeoLocator {
     logger.debug('GeoLocator.constructor', options);
     this.success = success;
     this.fail = fail;
-    this.options = _.extend({}, options);
+    this.options = Object.assign({}, options);
     // TODO: callback should be event
   }
 
@@ -17,7 +17,7 @@ class GeoLocator {
   }
 
   gotNoPosition(error) {
-    Flasher.warning("Failed to get position.");
+    FLASHER.warning("Failed to get position.");
     if (this.fail) {
       this.fail.call(this);
     }
@@ -30,7 +30,7 @@ class GeoLocator {
         this.gotPosition.bind(this),
         this.gotNoPosition.bind(this));
     } else {
-      Flasher.warning('No geolocation available.');
+      FLASHER.warning('No geolocation available.');
     }
   }
 }

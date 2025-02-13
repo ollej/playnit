@@ -13,7 +13,7 @@ class GeoDisplay {
       },
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    this.options = _.extend(default_options, options);
+    this.options = Object.assign({}, default_options, options);
   }
 
   addMapUnavailable() {
@@ -71,7 +71,7 @@ class GeoDisplay {
       height: this.height
     });
     logger.debug('GeoDisplay.addEmptyMap @options', this.options);
-    const options = _.extend({}, this.options);
+    const options = Object.assign({}, this.options);
     this.map = new google.maps.Map($mapDiv[0], options);
     this.div.replaceWith($mapDiv);
   }
