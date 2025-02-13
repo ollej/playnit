@@ -56,8 +56,6 @@
   <a href="?limit=<%= Playing.count %>">List all</a>
 </div>
 
-<script type="text/javascript" charset="utf-8">
-    //<![CDATA[
-    var positions = $.parseJSON('<%=j get_positions(@playings).to_json.html_safe %>');
-    // ]]>
-</script>
+<%= javascript_tag do -%>
+  window.positions = $.parseJSON('<%=j get_positions(@playings).to_json.html_safe %>');
+<% end -%>

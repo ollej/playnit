@@ -82,9 +82,7 @@ content_for(:card) do
 -->
 <%= link_to 'Back', playings_path %>
 
-<script type="text/javascript" charset="utf-8">
-    //<![CDATA[
-    var position = $.parseJSON('<%=j @playing.position.to_json.html_safe %>');
-    // ]]>
-</script>
+<%= javascript_tag do -%>
+  window.position = $.parseJSON('<%=j @playing.position.to_json.html_safe %>');
+<% end -%>
 
