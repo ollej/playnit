@@ -33,7 +33,10 @@
     <!-- Size should be 32 x 32 pixels -->
     <%#= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
 
-    <script>window.initMap = function() { console.log("Google maps loaded") }</script>
+    <script>
+      window.initMap = function() { console.log("Google maps loaded") };
+      window.logging = <%= Rails.env.local? %>;
+    </script>
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API_KEY']}&callback=initMap" %>
     <%= javascript_include_tag "application" %>
   </head>
