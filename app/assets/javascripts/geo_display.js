@@ -1,7 +1,7 @@
 class GeoDisplay {
   constructor(sel, options = {}) {
+    this.div = Dom.q(sel);
     logger.debug('GeoDisplay.constructor', sel, options, this.div);
-    this.div = $(sel);
     this.width = 640;
     this.height = 480;
     this.latlngs = [];
@@ -65,15 +65,15 @@ class GeoDisplay {
 
   addEmptyMap() {
     logger.debug('GeoDisplay.addEmptyMap');
-    const $mapDiv = $('<div>', {
+    const mapDiv = Dom.create('div', {
       id: 'mapcanvas',
       width: this.width,
       height: this.height
     });
     logger.debug('GeoDisplay.addEmptyMap @options', this.options);
     const options = Object.assign({}, this.options);
-    this.map = new google.maps.Map($mapDiv[0], options);
-    this.div.replaceWith($mapDiv);
+    this.map = new google.maps.Map(mapDiv.el, options);
+    this.div.replace(mapDiv);
   }
 
   addMarker(latlng) {

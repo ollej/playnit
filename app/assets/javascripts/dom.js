@@ -11,8 +11,12 @@ class Dom {
     return this.proxy(document.querySelectorAll(query));
   }
 
-  static create(html) {
+  static fragment(html) {
     return document.createRange().createContextualFragment(html);
+  }
+
+  static create(tag, attributes) {
+    return this.proxy(Object.assign(document.createElement(tag), attributes));
   }
 
   static clear(node) {
@@ -21,7 +25,7 @@ class Dom {
   }
 
   static append(node, html) {
-    const fragment = this.create(html);
+    const fragment = this.fragment(html);
     node.appendChild(fragment);
     return node;
   }
@@ -38,7 +42,15 @@ class Dom {
       clear() {
         Dom.clear(this);
         return this;
-      }
+      },
+      html(content) {
+        this.innerHTML = content;
+        return this;
+      },
+      replace(element) {
+        this.replaceWith(element.el);
+        return this;
+      },
     };
     const handler = {
       has(target, prop) {
@@ -48,6 +60,11 @@ class Dom {
         return prop in target;
       },
       get(target, prop, receiver) {
+        // Return inner element
+        if (prop === "el") {
+          return target;
+        }
+
         // Add additional methods
         if (prop in methods) {
           return function (...args) {
@@ -55,7 +72,7 @@ class Dom {
           };
         }
 
-        // delegate method with "this" set to target
+        // Delegate method with "this" set to target
         const value = target[prop];
         if (value instanceof Function) {
           return function (...args) {
@@ -64,8 +81,8 @@ class Dom {
         }
 
         // Return property value
-        return value;
-      }
+        return Reflect.get(target, prop, receiver)
+      },
     };
 
     return new Proxy(element, handler);
