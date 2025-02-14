@@ -32,7 +32,6 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 #gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
-gem 'underscore-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

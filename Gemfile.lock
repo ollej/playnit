@@ -364,7 +364,6 @@ GEM
       railties (>= 5.0, < 8.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    underscore-rails (1.8.3)
     unf (0.2.0)
     unicorn (6.1.0)
       kgio (~> 2.6)
@@ -424,7 +423,6 @@ DEPENDENCIES
   sprockets-rails
   sqlite3
   twitter-bootstrap-rails
-  underscore-rails
   unf
   unicorn-rails
   webpacker

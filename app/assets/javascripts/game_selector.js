@@ -1,10 +1,3 @@
-/*
- * decaffeinate suggestions:
- * DS102: Remove unnecessary code created because of implicit returns
- * DS207: Consider shorter variations of null checks
- * DS208: Avoid top-level this
- * Full docs: https://github.com/decaffeinate/decaffeinate/blob/main/docs/suggestions.md
- */
 class GameSelector {
   constructor(sel = '.autocomplete') {
     logger.debug("GameSelector.constructor", sel);
@@ -63,7 +56,7 @@ class GameSelector {
 
   getLabel(bgg_id) {
     logger.debug('GameSelector.getLabel', bgg_id);
-    return _.find(this.data, game => game.value === bgg_id);
+    return this.data.find(game => game.value === bgg_id);
   }
 }
 
