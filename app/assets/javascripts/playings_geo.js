@@ -46,6 +46,9 @@ class PlayingsGeo {
     if (window.position) {
       logger.debug('PlayingsGeo.initshow has position');
       geo.addMap(GeoPosition.fromGeoLocations(window.position));
+    } else {
+      logger.debug("No position available");
+      geo.addMapUnavailable();
     }
   }
 

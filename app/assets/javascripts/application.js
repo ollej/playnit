@@ -11,8 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery-ui
+//= require @hotwired/turbo/dist/turbo.es2017-umd.js
 //= require twitter/bootstrap
 //= require thirdparty/moxie/moxie.js
 //= require thirdparty/plupload/plupload.dev.js

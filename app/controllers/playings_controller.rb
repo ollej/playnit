@@ -66,10 +66,10 @@ class PlayingsController < ApplicationController
 
     respond_to do |format|
       if @playing.save
-        format.html { redirect_to @playing, notice: 'Thank you for playing!' }
+        format.html { redirect_to @playing, notice: 'Thank you for playing!', status: :see_other }
         format.json { render json: @playing, status: :created, location: @playing }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", status: :unprocessable_entity }
         format.json { render json: @playing.errors, status: :unprocessable_entity }
       end
     end
@@ -86,11 +86,11 @@ class PlayingsController < ApplicationController
       end
     else
       respond_to do |format|
-        if @playing.update_attributes(playing_params)
-          format.html { redirect_to @playing, notice: 'Playing was successfully updated.' }
+        if @playing.update(playing_params)
+          format.html { redirect_to @playing, notice: 'Playing was successfully updated.', status: :see_other }
           format.json { head :no_content }
         else
-          format.html { render action: "edit" }
+          format.html { redirect_to edit_playing_path(@playing), status: :unprocessable_entity, alert: "Could not delete playing: #{@playing.errors.to_sentence}" }
           format.json { render json: @playing.errors, status: :unprocessable_entity }
         end
       end
@@ -104,11 +104,14 @@ class PlayingsController < ApplicationController
     unless current_user.can_modify?(@playing)
       render status: :forbidden
     else
-      @playing.destroy
-
       respond_to do |format|
-        format.html { redirect_to playings_url, notice: "#{@playing.game} checkin deleted" }
-        format.json { head :no_content }
+        if @playing.destroy
+          format.html { redirect_to playings_url, notice: "#{@playing.game} checkin deleted", status: :see_other }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit", status: :unprocessable_entity }
+          format.json { render json: @playing.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

@@ -68,8 +68,14 @@
     <div class="row">
       <div class="actions controls col-lg-5">
         <br>
-        <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
-          <i class="glyphicon glyphicon-ok glyphicon-white"></i> Create playing
+        <% if @playing.persisted? %>
+          <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+            <i class="glyphicon glyphicon-ok glyphicon-white"></i> Update playing
+          <% end %>
+        <% else %>
+          <%= button_tag(type: 'submit', class: 'btn btn-primary') do %>
+            <i class="glyphicon glyphicon-ok glyphicon-white"></i> Create playing
+          <% end %>
         <% end %>
       </div>
     </div>

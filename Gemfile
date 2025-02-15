@@ -5,18 +5,13 @@ gem 'rails', '7.2.2.1'
 
 gem 'bootsnap', require: false
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'radix62', git: 'https://github.com/ollej/radix62'
 
 gem 'pg'
 gem 'devise'
 gem 'eco'
 gem 'redis'
-#gem 'newrelic_rpm'
 gem 'twitter-bootstrap-rails'
-#gem 'therubyracer'
 gem 'bgg-api'
 gem 'unf'
 gem 'carrierwave'
@@ -26,23 +21,15 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'sass-rails'
-#gem 'coffee-rails'
-
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-#gem 'turbo-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'turbo-rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
 # Use unicorn as the app server
 gem 'unicorn-rails'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # Fixes for ruby upgrade
 gem 'sprockets-rails'

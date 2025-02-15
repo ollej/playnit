@@ -46,7 +46,7 @@
       <%= menu_group do %>
         <% if user_signed_in? %>
           <%= menu_item glyph('user') + ' Edit profile', edit_user_registration_path %>
-          <%= menu_item glyph('off') + ' Logout', destroy_user_session_path, method: :delete %>
+          <%= menu_item glyph('off') + ' Logout', destroy_user_session_path, data: {turbo_method: :delete} %>
         <% else %>
           <%= menu_item glyph('user') + ' Sign up', new_user_registration_path %>
           <%= menu_item glyph('off') + ' Login', new_user_session_path %>

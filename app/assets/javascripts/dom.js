@@ -31,7 +31,7 @@ class Dom {
   }
 
   static ready(callback) {
-    document.addEventListener("DOMContentLoaded", callback);
+    document.addEventListener("turbo:load", callback);
   }
 
   static proxy(element) {

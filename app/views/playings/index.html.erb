@@ -32,7 +32,7 @@
           <% end %>
           <% if user_signed_in? && current_user.can_modify?(playing) %>
           <%= link_to glyph('edit') + ' Edit', edit_playing_path(playing), class: 'btn btn-xs btn-primary' %>
-          <%= link_to glyph('remove') + ' Delete', playing, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %>
+          <%= link_to glyph('remove') + ' Delete', playing, class: 'btn btn-xs btn-danger', data: { turbo: true, turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
           <% end %>
         </div>
       </div>
