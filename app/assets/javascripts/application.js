@@ -17,4 +17,5 @@
 //= require thirdparty/moxie/moxie.js
 //= require thirdparty/plupload/plupload.dev.js
 //= require thirdparty/plupload/jquery.plupload.queue.js
+//= require thirdparty/mastodon-share
 //= require_tree .

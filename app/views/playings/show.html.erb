@@ -15,7 +15,7 @@ content_for(:card) do
     <div class="row col-md-12">
       <% unless @playing.photo.url.blank? %>
       <div class="photo">
-        <%= image_tag @playing.photo.url, class: 'img-thumbnail' %>
+        <%= image_tag @playing.photo.url, class: 'img-thumbnail center-block' %>
       </div>
       <% end %>
     </div>
@@ -57,13 +57,21 @@ content_for(:card) do
         <%= @playing.content %>
       </div>
     </div>
-    <div class="row">
+    <div class="row mastodon-share-row">
       <div class="col-md-12 pull-right">
-        <a href="https://twitter.com/share" class="twitter-share-button"
-          data-url="<%= short_url %>"
-          data-size="large" data-count="none"
-          data-text="<%= @playing.summary(current_user == @playing.user) %>" data-dnt="true">Share on Twitter</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <a href="#"
+          rel="noreferrer noopener" 
+          target="mastodon" 
+          data-prompt="Please tell me your Mastodon instance" 
+          data-edittext="✏️" 
+          data-edithtml="<%= html_escape_once(glyph('edit')) %>" 
+          data-editlabel="Edit your Mastodon instance" 
+          data-sharetext="<%= @playing.summary(current_user == @playing.user) %>"
+          class="mastodon-share btn btn-default">
+          <%= image_tag asset_path("mastodon.svg") %>
+            Share to Mastodon
+        </a>
+        <%= glyph('mastodon') %>
       </div>
     </div>
     <div class="row">
