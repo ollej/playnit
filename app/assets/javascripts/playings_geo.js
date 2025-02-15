@@ -1,13 +1,13 @@
 class PlayingsGeo {
   initGeo() {
     logger.debug('PlayingsGeo.initGeo');
-    if ($("#map-edit").length > 0) {
+    if (Dom.id("map-edit")) {
       this.initEdit('#map-edit');
     }
-    if ($("#map-index").length > 0) {
+    if (Dom.id("map-index")) {
       this.initIndex();
     }
-    if ($("#map-show").length > 0) {
+    if (Dom.id("map-show")) {
       this.initShow();
     }
   }
@@ -20,7 +20,7 @@ class PlayingsGeo {
       return;
     }
 
-    if ($('#new-playing').length > 0) {
+    if (Dom.id('new-playing')) {
       const geo_locator = new GeoLocator(
         pos => this.displayMap(sel, pos),
         () => this.displayNoMap(sel)
@@ -56,19 +56,20 @@ class PlayingsGeo {
   }
 
   longitude() {
-    return $('#playing_longitude').val();
+    return Dom.id('playing_longitude').val();
   }
 
   latitude() {
-    return $('#playing_latitude').val();
+    return Dom.id('playing_latitude').val();
   }
 
   displayMap(sel, positions) {
     logger.debug('PlayingsGeo.displayMap');
     new GeoDisplay(sel).addMap(positions);
     const position = positions[0];
-    $('#playing_longitude').val(position.long());
-    $('#playing_latitude').val(position.lat());
+    logger.debug("PlayingsGeo.displayMap position=", position);
+    Dom.id('playing_longitude').val(position.long());
+    Dom.id('playing_latitude').val(position.lat());
   }
 
   displayNoMap(sel) {

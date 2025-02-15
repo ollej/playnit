@@ -89,4 +89,3 @@ class GeoDisplay {
 }
 
 (typeof exports !== 'undefined' && exports !== null ? exports : this).GeoDisplay = GeoDisplay;
-

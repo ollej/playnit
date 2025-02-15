@@ -29,7 +29,7 @@ class Uploader {
     if (!this.fileApiAvailable()) {
       logger.warn('File API not available');
       FLASHER.warning('Photo uploads unavailable on this device.');
-      $("#photo-group").hide();
+      Dom.id("photo-group").hide();
       return;
     }
     const uploader_options = Object.assign({}, default_options, options);
@@ -43,16 +43,21 @@ class Uploader {
 
   showPhoto(location) {
     logger.debug('Uploader.showPhoto', location);
-    const img = $('<img></img>')
-      .prop('src', location)
-      .prop('class', 'img-thumbnail');
-    $("#photo").html(img);
+    const img = Dom.create('img', {
+      src: location,
+      className: 'img-thumbnail'
+    });
+    Dom.id("photo").replaceChildren(img);
   }
 
   addPhoto(photo) {
     logger.debug('Uploader.addPhoto', photo);
-    const $photo = $("<input>", {type:'hidden', name: "playing[remote_photo_url]", value: photo});
-    $("#new_playing").append($photo);
+    const photoEl = Dom.create("input", {
+      type: 'hidden',
+      name: "playing[remote_photo_url]",
+      value: photo
+    });
+    Dom.id("new_playing").appendChild(photoEl);
   }
 
   onFileUploaded(up, file, response) {
@@ -69,7 +74,7 @@ class Uploader {
   onImageLoaded(img) {
     logger.debug('Uploader.onImageLoaded', img);
     // TODO: Send img.meta.gps coords to GeoLocator object (via event?)
-    if (img && img.meta && img.meta.gps) {
+    if (img?.meta?.gps) {
       this.updateGPS(img.meta.gps);
     }
   }
@@ -79,11 +84,11 @@ class Uploader {
     const pos = GeoPosition.fromGPS(gps_data);
     if (pos.valid()) {
       // Ugly hack to insert positions in html
-      const $long = $('#playing_longitude');
-      const $lat = $('#playing_latitude');
-      if (!$long.val() && !$lat.val()) {
-        $long.val(pos.long());
-        $lat.val(pos.lat());
+      const long = Dom.id('playing_longitude');
+      const lat = Dom.id('playing_latitude');
+      if (!long.val() && !lat.val()) {
+        long.val(pos.long());
+        lat.val(pos.lat());
         FLASHER.info('Got position from uploaded JPEG.');
         new GeoDisplay("#map-edit").addMap(pos);
       }
@@ -94,7 +99,7 @@ class Uploader {
     this.uploader.bind("FilesAdded", (up, files) => {
       var self = this;
       logger.debug('Files added:', up, files);
-      $.each(files, (i, file) => {
+      files.forEach((file) => {
         logger.debug('File added:', file);
         const moxieimg = new mOxie.Image();
         moxieimg.onload = () => {
