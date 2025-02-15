@@ -12,7 +12,7 @@ content_for(:card) do
 <% end %>
 <div class="playing container-fluid">
   <div class="well well-sm">
-    <div class="row col-md-12">
+    <div class="row photo-row col-md-12 center-block">
       <% unless @playing.photo.url.blank? %>
       <div class="photo">
         <%= image_tag @playing.photo.url, class: 'img-thumbnail center-block' %>

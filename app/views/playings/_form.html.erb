@@ -32,8 +32,16 @@
         <%= f.label :photo, 'Photo', class: 'control-label' %>
         <div class="controls">
           <div class="uploader" id="uploader">
-            <%= link_to 'Add photo', '#', id: 'add_photo' %>
-            <div id="photo" class="photo"></div>
+            <% if @playing.photo.blank? %>
+              <%= link_to 'Add photo', '#', id: 'add_photo' %>
+            <% end %>
+            <div id="photo" class="photo">
+              <% if @playing.photo.present? %>
+                <%= link_to '#', { id: 'add_photo' } do %>
+                  <%= image_tag @playing.photo.url, class: 'img-thumbnail center-block' %>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

@@ -32,8 +32,8 @@ class Uploader {
       Dom.id("photo-group").hide();
       return;
     }
-    const uploader_options = Object.assign({}, default_options, options);
-    this.uploader = new plupload.Uploader(uploader_options);
+    this.uploader_options = Object.assign({}, default_options, options);
+    this.uploader = new plupload.Uploader(this.uploader_options);
     this.bindListeners();
   }
 
@@ -52,12 +52,13 @@ class Uploader {
 
   addPhoto(photo) {
     logger.debug('Uploader.addPhoto', photo);
-    const photoEl = Dom.create("input", {
+    const photoInput = Dom.create("input", {
       type: 'hidden',
       name: "playing[remote_photo_url]",
       value: photo
     });
-    Dom.id("new_playing").appendChild(photoEl);
+    const el = this.uploader_options["container"];
+    Dom.id(el).appendChild(photoInput);
   }
 
   onFileUploaded(up, file, response) {
