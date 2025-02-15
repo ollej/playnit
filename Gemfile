@@ -26,12 +26,11 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'sass-rails'
-gem 'coffee-rails'
-#gem 'uglifier'#, '>= 1.0.3'
+#gem 'coffee-rails'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-#gem 'zepto-rails', :github => 'frontfoot/zepto-rails'
+#gem 'turbo-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
