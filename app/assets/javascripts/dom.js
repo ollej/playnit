@@ -30,6 +30,10 @@ class Dom {
     return node;
   }
 
+  static ready(callback) {
+    document.addEventListener("DOMContentLoaded", callback);
+  }
+
   static proxy(element) {
     if (!element) {
       return null;
@@ -37,6 +41,10 @@ class Dom {
     const methods = {
       append(html) {
         Dom.append(this, html);
+        return this;
+      },
+      appendChild(element) {
+        this.appendChild(element.el);
         return this;
       },
       clear() {
@@ -50,6 +58,22 @@ class Dom {
       replace(element) {
         this.replaceWith(element.el);
         return this;
+      },
+      replaceChildren(element) {
+        this.replaceChildren(element.el);
+        return this;
+      },
+      val(value) {
+        if (value === undefined) {
+          return this.value;
+        }
+        this.value = value;
+      },
+      hide() {
+        this.style.display = "none";
+      },
+      show() {
+        this.style.display = "block";
       },
     };
     const handler = {
