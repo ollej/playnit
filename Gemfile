@@ -36,7 +36,6 @@ gem 'sprockets-rails'
 gem 'mutex_m'
 gem 'bigdecimal'
 gem 'benchmark'
-gem 'webpacker'
 gem 'ostruct'
 gem 'concurrent-ruby', '1.3.4'
 
